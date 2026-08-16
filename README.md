@@ -72,9 +72,18 @@ simulation settings fail closed.
 
 ### Output envelope
 
-Successful execution uses `status: "ok"` and returns the raw, replayable `AnalysisResult` under
-`payload`. Engine warnings and evidence references are repeated at the envelope level as `warnings`
-and `provenance` for a generic orchestrator.
+Successful execution uses `status: "ok"`, returns the raw, replayable `AnalysisResult` under
+`payload`, and always includes the required shared UI contract at top-level `interpretability`.
+Engine warnings and evidence references are repeated at the envelope level as `warnings` and
+`provenance` for a generic orchestrator.
+
+The shared `interpretability` object is schema version `1.0.0`. It maps, without recalculation,
+the native summary, calculation steps, evidence references, input assumptions, uncertainty,
+warnings, failed evidence gates, launch-delay counterfactual, and lineage into stable common fields.
+Module-specific value decomposition, annual ledger, financial context, RNG/correlation details, and
+native evidence grades remain available under `interpretability.extensions`. Unknown values stay
+JSON `null` and carry a structured limitation; transport completion never upgrades a
+`NOT_DECISION_GRADE` result.
 
 Failure uses `status: "error"`, `payload: null`, and structured `errors` with `type`, `path`, and
 `message`. `NOT_DECISION_GRADE` is not a transport failure; downstream consumers must inspect both
@@ -189,10 +198,12 @@ code `2`:
 }
 ```
 
-Each analysis JSON includes an `interpretability` manifest with the status taxonomy, decision-grade
-warning, input digest/version context, price currency/basis/year context, patient OOP basis, shared
-patent clock, declared simulation design, internal output reconciliation, and optional reality-anchor
-report. Do not scrape a displayed KPI and discard those fields.
+Each analyst-CLI analysis JSON includes its existing presentation-oriented `interpretability`
+manifest with the status taxonomy, decision-grade warning, input digest/version context, price
+currency/basis/year context, patient OOP basis, shared patent clock, declared simulation design,
+internal output reconciliation, and optional reality-anchor report. This is distinct from the
+portable module response's required shared contract. Do not scrape a displayed KPI and discard
+either surface.
 
 `labrador replay analysis.json` reconstructs the recorded inputs and verifies engine-owned fields.
 The CLI/dashboard interpretation envelope is excluded from replay equality. A successful replay
@@ -286,6 +297,7 @@ labrador analyze fixtures/demo_program.json \
 app.py                         Streamlit dashboard
 fixtures/                      Explicitly synthetic demo inputs
 src/labrador_roi/cli.py        JSON/CSV adapters and CLI commands
+src/labrador_roi/interpretability.py  Shared portable interpretability adapter
 src/labrador_roi/models.py     Validated domain contracts
 src/labrador_roi/engine.py     Analysis orchestrator
 docs/source-policy.md          Evidence and price-basis rules

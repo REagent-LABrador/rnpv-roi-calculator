@@ -1,10 +1,11 @@
 # rNPV/ROI module JSON contracts
 
 Both schemas use JSON Schema Draft 2020-12 and are generated from the Pydantic transport/domain
-models. Regenerate them with:
+models. Regenerate the schemas/input example, then the canonical response, with:
 
 ```bash
 .venv/bin/python scripts/generate_contract_artifacts.py
+.venv/bin/rnpv-roi run --input examples/input.json --output examples/output.json
 ```
 
 CI fails if the generated input/schema artifacts drift from the checked-in files.
@@ -53,8 +54,20 @@ Useful success paths for the orchestrator/UI:
 | `payload.uncertainty` | Seeded rNPV, revenue, cash-at-risk, and protected-year distributions. |
 | `payload.calculation_steps` | Formulas, inputs, outputs, units, and notes for interpretation. |
 | `payload.critical_evidence_status` | Fail-closed evidence gates. |
+| `interpretability` | Required shared UI contract for every `status: "ok"` response. |
 | `warnings` | Envelope copy of engine warnings for generic pipeline display. |
 | `provenance` | Envelope copy of field-level evidence references. |
+
+`interpretability` schema version `1.0.0` contains required `headline`, `metrics`, `steps`,
+`evidence`, `assumptions`, `uncertainty`, `limitations`, `counterfactuals`, `lineage`, and
+`extensions` fields. Its adapter copies authoritative native outputs rather than recalculating them.
+References are validated at runtime, numeric metrics carry units, Monte Carlo ranges are labeled as
+scenario percentiles rather than confidence intervals, and unknown values remain `null` with a
+limitation. The RNPV-specific extension retains the exact value decomposition and annual ledger,
+plus currency/valuation-year/price-basis and RNG/correlation context.
+
+The requirement applies only to successful/domain-degraded responses. Infrastructure and input
+failures keep the existing `status: "error"` envelope and do not fabricate an interpretation.
 
 Exact replay requires the recorded engine version and compatible locked dependencies. A seed and
 input JSON alone are not a cross-version numerical reproducibility guarantee.
