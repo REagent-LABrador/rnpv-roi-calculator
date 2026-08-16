@@ -18,6 +18,7 @@ from labrador_roi.engine import (
     EvidenceReference,
     analyze_program,
 )
+from labrador_roi.interpretability import Interpretability, build_interpretability
 from labrador_roi.models import (
     ComparableTherapy,
     ProgramInput,
@@ -110,6 +111,7 @@ class ModuleRunSuccess(BaseModel):
     request_id: str = Field(min_length=1)
     status: Literal["ok"] = "ok"
     payload: AnalysisResult
+    interpretability: Interpretability
     artifacts: tuple[ModuleArtifact, ...] = ()
     warnings: tuple[WarningRecord, ...]
     provenance: tuple[EvidenceReference, ...]
@@ -152,6 +154,7 @@ def execute_request(request: ModuleRunRequest) -> ModuleRunSuccess:
     return ModuleRunSuccess(
         request_id=request.request_id,
         payload=result,
+        interpretability=build_interpretability(result),
         warnings=result.warnings,
         provenance=result.evidence_references,
     )

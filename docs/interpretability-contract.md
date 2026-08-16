@@ -5,6 +5,39 @@ Interpretability means that an analyst can recover the exact inputs, conventions
 uncertainty design, evidence gaps, and internal reconciliations behind an output. It does **not**
 mean that a transparent output is accurate, calibrated, or appropriate for a decision.
 
+## Shared portable output contract
+
+Every portable `rnpv-roi run` response with `status: "ok"` has a required top-level
+`interpretability` object with schema version `1.0.0`. This includes scientifically degraded
+`NOT_DECISION_GRADE` calculations; transport success is not evidence sufficiency. Input or
+infrastructure failures retain the structured error envelope and do not invent a result.
+
+The common fields are:
+
+- `headline` — stable result, plain-language conclusion, status, and modeled/synthetic basis;
+- `metrics` — native headline and selected-price/access values with units and evidence or assumption
+  links;
+- `steps` — a one-to-one mapping of native calculation steps, formulas, inputs, results, and units;
+- `evidence` and `assumptions` — stable IDs, provenance, grades, explicit synthetic state, and nulls
+  where the native record cannot establish a value;
+- `uncertainty` — P10/P50/P90 scenario percentiles with seed and draws, never mislabeled as
+  confidence intervals;
+- `limitations` — every native warning, every failed critical evidence gate, unknowns, and partial
+  interpretability fields;
+- `counterfactuals` and `lineage` — the native one-year launch-delay result and documented input to
+  output transformations; and
+- `extensions` — the unchanged value decomposition, annual ledger, financial context,
+  RNG/correlation assumptions, native evidence details, and calculation-step notes.
+
+IDs are stable and do not use array positions. Runtime validation rejects duplicate IDs, dangling
+evidence/assumption/metric references, untagged important metrics, and non-finite numbers. Native
+evidence does not provide verified quotes or page/section locators, so those fields are `null` with
+`INTERPRETABILITY_PARTIAL`; the adapter never manufactures them.
+
+The analyst CLI and dashboard retain their older presentation manifest (`status_legend`,
+`simulation_design`, `output_reconciliation`, and optional reality anchors). That surface is
+replay-excluded and remains separate from the portable response contract.
+
 ## Four result types that must not be conflated
 
 | Result type | What it means | What it does not mean |
