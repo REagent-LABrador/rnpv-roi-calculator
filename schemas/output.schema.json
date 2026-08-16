@@ -1,0 +1,1457 @@
+{
+  "$defs": {
+    "AccessEstimate": {
+      "additionalProperties": false,
+      "description": "Access at one annual net price, with unknown income data kept explicit.",
+      "properties": {
+        "accessible_patients": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Accessible Patients"
+        },
+        "annual_net_price": {
+          "title": "Annual Net Price",
+          "type": "number"
+        },
+        "expected_patient_oop": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Expected Patient Oop"
+        },
+        "income_affordable_share": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Income Affordable Share"
+        },
+        "known_affordable_lower_bound": {
+          "title": "Known Affordable Lower Bound",
+          "type": "number"
+        },
+        "patient_oop_basis": {
+          "$ref": "#/$defs/PatientOOPBasis"
+        },
+        "payer_paid_per_patient": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Payer Paid Per Patient"
+        },
+        "system_access_fraction": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "System Access Fraction"
+        },
+        "total_access_fraction": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Total Access Fraction"
+        },
+        "unknown_income_share": {
+          "title": "Unknown Income Share",
+          "type": "number"
+        },
+        "warnings": {
+          "items": {
+            "$ref": "#/$defs/WarningRecord"
+          },
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "required": [
+        "annual_net_price",
+        "expected_patient_oop",
+        "patient_oop_basis",
+        "income_affordable_share",
+        "known_affordable_lower_bound",
+        "unknown_income_share",
+        "system_access_fraction",
+        "total_access_fraction",
+        "accessible_patients",
+        "payer_paid_per_patient"
+      ],
+      "title": "AccessEstimate",
+      "type": "object"
+    },
+    "AccessSnapshot": {
+      "properties": {
+        "annual_persistence_rate": {
+          "title": "Annual Persistence Rate",
+          "type": "number"
+        },
+        "authorization_rate": {
+          "title": "Authorization Rate",
+          "type": "number"
+        },
+        "coverage_rate": {
+          "title": "Coverage Rate",
+          "type": "number"
+        },
+        "dose_intensity": {
+          "title": "Dose Intensity",
+          "type": "number"
+        },
+        "indication_id": {
+          "title": "Indication Id",
+          "type": "string"
+        },
+        "initiation_rate": {
+          "title": "Initiation Rate",
+          "type": "number"
+        },
+        "patient_affordability_rate": {
+          "title": "Patient Affordability Rate",
+          "type": "number"
+        },
+        "peak_adoption_rate": {
+          "title": "Peak Adoption Rate",
+          "type": "number"
+        },
+        "provider_capacity_rate": {
+          "title": "Provider Capacity Rate",
+          "type": "number"
+        }
+      },
+      "required": [
+        "indication_id",
+        "coverage_rate",
+        "authorization_rate",
+        "patient_affordability_rate",
+        "initiation_rate",
+        "provider_capacity_rate",
+        "peak_adoption_rate",
+        "annual_persistence_rate",
+        "dose_intensity"
+      ],
+      "title": "AccessSnapshot",
+      "type": "object"
+    },
+    "AnalysisResult": {
+      "properties": {
+        "access": {
+          "items": {
+            "$ref": "#/$defs/AccessSnapshot"
+          },
+          "title": "Access",
+          "type": "array"
+        },
+        "calculation_steps": {
+          "items": {
+            "$ref": "#/$defs/CalculationStep"
+          },
+          "title": "Calculation Steps",
+          "type": "array"
+        },
+        "cash_flow": {
+          "$ref": "#/$defs/CashFlowResult"
+        },
+        "critical_evidence_status": {
+          "additionalProperties": {
+            "type": "boolean"
+          },
+          "title": "Critical Evidence Status",
+          "type": "object"
+        },
+        "decision_grade": {
+          "$ref": "#/$defs/DecisionGrade"
+        },
+        "engine_version": {
+          "title": "Engine Version",
+          "type": "string"
+        },
+        "evidence_references": {
+          "items": {
+            "$ref": "#/$defs/EvidenceReference"
+          },
+          "title": "Evidence References",
+          "type": "array"
+        },
+        "generated_at": {
+          "title": "Generated At",
+          "type": "string"
+        },
+        "input_digest": {
+          "title": "Input Digest",
+          "type": "string"
+        },
+        "input_snapshot": {
+          "additionalProperties": true,
+          "title": "Input Snapshot",
+          "type": "object"
+        },
+        "pricing": {
+          "items": {
+            "$ref": "#/$defs/PricingAnalysisSnapshot"
+          },
+          "title": "Pricing",
+          "type": "array"
+        },
+        "recommendation": {
+          "$ref": "#/$defs/Recommendation"
+        },
+        "run_id": {
+          "title": "Run Id",
+          "type": "string"
+        },
+        "schema_version": {
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "seed": {
+          "title": "Seed",
+          "type": "integer"
+        },
+        "simulation_assumptions": {
+          "$ref": "#/$defs/SimulationAssumptions"
+        },
+        "simulations": {
+          "title": "Simulations",
+          "type": "integer"
+        },
+        "summary": {
+          "$ref": "#/$defs/AnalysisSummary"
+        },
+        "uncertainty": {
+          "$ref": "#/$defs/SimulationResult"
+        },
+        "value_decomposition": {
+          "$ref": "#/$defs/ValueDecomposition"
+        },
+        "warnings": {
+          "items": {
+            "$ref": "#/$defs/WarningRecord"
+          },
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "required": [
+        "schema_version",
+        "run_id",
+        "generated_at",
+        "engine_version",
+        "input_digest",
+        "seed",
+        "simulations",
+        "simulation_assumptions",
+        "input_snapshot",
+        "summary",
+        "decision_grade",
+        "recommendation",
+        "pricing",
+        "access",
+        "cash_flow",
+        "uncertainty",
+        "calculation_steps",
+        "value_decomposition",
+        "warnings",
+        "critical_evidence_status",
+        "evidence_references"
+      ],
+      "title": "AnalysisResult",
+      "type": "object"
+    },
+    "AnalysisSummary": {
+      "properties": {
+        "deterministic_rnpv": {
+          "title": "Deterministic Rnpv",
+          "type": "number"
+        },
+        "effective_protected_years": {
+          "title": "Effective Protected Years",
+          "type": "number"
+        },
+        "p10_rnpv": {
+          "title": "P10 Rnpv",
+          "type": "number"
+        },
+        "p50_rnpv": {
+          "title": "P50 Rnpv",
+          "type": "number"
+        },
+        "p90_rnpv": {
+          "title": "P90 Rnpv",
+          "type": "number"
+        },
+        "peak_annual_net_revenue": {
+          "title": "Peak Annual Net Revenue",
+          "type": "number"
+        },
+        "peak_annual_net_revenue_p50": {
+          "title": "Peak Annual Net Revenue P50",
+          "type": "number"
+        },
+        "peak_annual_net_revenue_year": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Peak Annual Net Revenue Year"
+        },
+        "peak_cash_at_risk_p50": {
+          "title": "Peak Cash At Risk P50",
+          "type": "number"
+        },
+        "probability_positive_rnpv": {
+          "title": "Probability Positive Rnpv",
+          "type": "number"
+        },
+        "program_id": {
+          "title": "Program Id",
+          "type": "string"
+        },
+        "recommendation": {
+          "$ref": "#/$defs/Recommendation"
+        },
+        "simulated_mean_rnpv": {
+          "title": "Simulated Mean Rnpv",
+          "type": "number"
+        },
+        "value_lost_per_launch_delay_year": {
+          "title": "Value Lost Per Launch Delay Year",
+          "type": "number"
+        }
+      },
+      "required": [
+        "program_id",
+        "recommendation",
+        "deterministic_rnpv",
+        "simulated_mean_rnpv",
+        "p10_rnpv",
+        "p50_rnpv",
+        "p90_rnpv",
+        "probability_positive_rnpv",
+        "peak_annual_net_revenue",
+        "peak_annual_net_revenue_year",
+        "peak_annual_net_revenue_p50",
+        "peak_cash_at_risk_p50",
+        "effective_protected_years",
+        "value_lost_per_launch_delay_year"
+      ],
+      "title": "AnalysisSummary",
+      "type": "object"
+    },
+    "AnnualCashFlow": {
+      "properties": {
+        "cogs": {
+          "title": "Cogs",
+          "type": "number"
+        },
+        "commercial_costs": {
+          "title": "Commercial Costs",
+          "type": "number"
+        },
+        "development_costs": {
+          "title": "Development Costs",
+          "type": "number"
+        },
+        "discounted_free_cash_flow": {
+          "title": "Discounted Free Cash Flow",
+          "type": "number"
+        },
+        "expansion_active_patients": {
+          "title": "Expansion Active Patients",
+          "type": "number"
+        },
+        "expansion_new_starts": {
+          "title": "Expansion New Starts",
+          "type": "number"
+        },
+        "free_cash_flow": {
+          "title": "Free Cash Flow",
+          "type": "number"
+        },
+        "gross_revenue": {
+          "title": "Gross Revenue",
+          "type": "number"
+        },
+        "gross_to_net_deductions": {
+          "title": "Gross To Net Deductions",
+          "type": "number"
+        },
+        "initial_active_patients": {
+          "title": "Initial Active Patients",
+          "type": "number"
+        },
+        "initial_new_starts": {
+          "title": "Initial New Starts",
+          "type": "number"
+        },
+        "net_revenue": {
+          "title": "Net Revenue",
+          "type": "number"
+        },
+        "post_loe_net_revenue": {
+          "title": "Post Loe Net Revenue",
+          "type": "number"
+        },
+        "protected": {
+          "description": "Whether the full annual bucket is protected.",
+          "title": "Protected",
+          "type": "boolean"
+        },
+        "protected_fraction": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Protected Fraction",
+          "type": "number"
+        },
+        "protected_net_revenue": {
+          "title": "Protected Net Revenue",
+          "type": "number"
+        },
+        "taxes": {
+          "title": "Taxes",
+          "type": "number"
+        },
+        "year": {
+          "title": "Year",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "year",
+        "protected",
+        "protected_fraction",
+        "initial_new_starts",
+        "expansion_new_starts",
+        "initial_active_patients",
+        "expansion_active_patients",
+        "gross_revenue",
+        "gross_to_net_deductions",
+        "net_revenue",
+        "protected_net_revenue",
+        "post_loe_net_revenue",
+        "cogs",
+        "commercial_costs",
+        "development_costs",
+        "taxes",
+        "free_cash_flow",
+        "discounted_free_cash_flow"
+      ],
+      "title": "AnnualCashFlow",
+      "type": "object"
+    },
+    "CalculationStep": {
+      "additionalProperties": false,
+      "description": "One reproducible step in a model result.",
+      "properties": {
+        "evidence_keys": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Keys",
+          "type": "array"
+        },
+        "formula": {
+          "title": "Formula",
+          "type": "string"
+        },
+        "inputs": {
+          "additionalProperties": true,
+          "title": "Inputs",
+          "type": "object"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "notes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Notes",
+          "type": "array"
+        },
+        "result": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Result"
+        },
+        "step_id": {
+          "title": "Step Id",
+          "type": "string"
+        },
+        "unit": {
+          "title": "Unit",
+          "type": "string"
+        }
+      },
+      "required": [
+        "step_id",
+        "label",
+        "formula",
+        "inputs",
+        "result",
+        "unit"
+      ],
+      "title": "CalculationStep",
+      "type": "object"
+    },
+    "CashFlowResult": {
+      "properties": {
+        "annual_cash_flows": {
+          "items": {
+            "$ref": "#/$defs/AnnualCashFlow"
+          },
+          "title": "Annual Cash Flows",
+          "type": "array"
+        },
+        "effective_exclusivity_end_year": {
+          "title": "Effective Exclusivity End Year",
+          "type": "number"
+        },
+        "effective_protected_years": {
+          "title": "Effective Protected Years",
+          "type": "number"
+        },
+        "expansion_approval_probability": {
+          "title": "Expansion Approval Probability",
+          "type": "number"
+        },
+        "expansion_effective_protected_years": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Expansion Effective Protected Years"
+        },
+        "initial_approval_probability": {
+          "title": "Initial Approval Probability",
+          "type": "number"
+        },
+        "npv": {
+          "title": "Npv",
+          "type": "number"
+        },
+        "patent_expiry_year": {
+          "title": "Patent Expiry Year",
+          "type": "number"
+        },
+        "peak_annual_net_revenue": {
+          "title": "Peak Annual Net Revenue",
+          "type": "number"
+        },
+        "peak_annual_net_revenue_year": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Peak Annual Net Revenue Year"
+        },
+        "peak_cash_at_risk": {
+          "title": "Peak Cash At Risk",
+          "type": "number"
+        },
+        "value_decomposition": {
+          "$ref": "#/$defs/ValueDecomposition"
+        },
+        "value_lost_per_launch_delay_year": {
+          "title": "Value Lost Per Launch Delay Year",
+          "type": "number"
+        },
+        "warnings": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "required": [
+        "patent_expiry_year",
+        "effective_exclusivity_end_year",
+        "effective_protected_years",
+        "expansion_effective_protected_years",
+        "initial_approval_probability",
+        "expansion_approval_probability",
+        "annual_cash_flows",
+        "npv",
+        "peak_annual_net_revenue",
+        "peak_annual_net_revenue_year",
+        "peak_cash_at_risk",
+        "value_lost_per_launch_delay_year",
+        "value_decomposition",
+        "warnings"
+      ],
+      "title": "CashFlowResult",
+      "type": "object"
+    },
+    "DecisionGrade": {
+      "enum": [
+        "DECISION_GRADE",
+        "NOT_DECISION_GRADE"
+      ],
+      "title": "DecisionGrade",
+      "type": "string"
+    },
+    "DistributionSummary": {
+      "properties": {
+        "mean": {
+          "title": "Mean",
+          "type": "number"
+        },
+        "p10": {
+          "title": "P10",
+          "type": "number"
+        },
+        "p50": {
+          "title": "P50",
+          "type": "number"
+        },
+        "p90": {
+          "title": "P90",
+          "type": "number"
+        },
+        "probability_positive": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Probability Positive"
+        }
+      },
+      "required": [
+        "mean",
+        "p10",
+        "p50",
+        "p90"
+      ],
+      "title": "DistributionSummary",
+      "type": "object"
+    },
+    "EvidenceReference": {
+      "properties": {
+        "citation": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Citation"
+        },
+        "evidence_type": {
+          "title": "Evidence Type",
+          "type": "string"
+        },
+        "field_path": {
+          "title": "Field Path",
+          "type": "string"
+        },
+        "grade": {
+          "title": "Grade",
+          "type": "string"
+        },
+        "source_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Id"
+        },
+        "source_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Url"
+        },
+        "synthetic": {
+          "title": "Synthetic",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "field_path",
+        "evidence_type",
+        "grade",
+        "synthetic"
+      ],
+      "title": "EvidenceReference",
+      "type": "object"
+    },
+    "ModuleArtifact": {
+      "additionalProperties": false,
+      "properties": {
+        "media_type": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Media Type"
+        },
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "path": {
+          "minLength": 1,
+          "title": "Path",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "path"
+      ],
+      "title": "ModuleArtifact",
+      "type": "object"
+    },
+    "ModuleErrorDetail": {
+      "additionalProperties": false,
+      "properties": {
+        "message": {
+          "minLength": 1,
+          "title": "Message",
+          "type": "string"
+        },
+        "path": {
+          "default": [],
+          "items": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ]
+          },
+          "title": "Path",
+          "type": "array"
+        },
+        "type": {
+          "minLength": 1,
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "message"
+      ],
+      "title": "ModuleErrorDetail",
+      "type": "object"
+    },
+    "ModuleRunFailure": {
+      "additionalProperties": false,
+      "properties": {
+        "artifacts": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/ModuleArtifact"
+          },
+          "title": "Artifacts",
+          "type": "array"
+        },
+        "contract_version": {
+          "const": "1.0.0",
+          "default": "1.0.0",
+          "title": "Contract Version",
+          "type": "string"
+        },
+        "engine_schema_version": {
+          "default": "1.3.0",
+          "title": "Engine Schema Version",
+          "type": "string"
+        },
+        "engine_version": {
+          "default": "0.4.0",
+          "title": "Engine Version",
+          "type": "string"
+        },
+        "errors": {
+          "items": {
+            "$ref": "#/$defs/ModuleErrorDetail"
+          },
+          "minItems": 1,
+          "title": "Errors",
+          "type": "array"
+        },
+        "module": {
+          "const": "rnpv_roi_calculator",
+          "default": "rnpv_roi_calculator",
+          "title": "Module",
+          "type": "string"
+        },
+        "module_version": {
+          "default": "0.4.0",
+          "title": "Module Version",
+          "type": "string"
+        },
+        "payload": {
+          "default": null,
+          "title": "Payload",
+          "type": "null"
+        },
+        "provenance": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/EvidenceReference"
+          },
+          "title": "Provenance",
+          "type": "array"
+        },
+        "request_id": {
+          "minLength": 1,
+          "title": "Request Id",
+          "type": "string"
+        },
+        "status": {
+          "const": "error",
+          "default": "error",
+          "title": "Status",
+          "type": "string"
+        },
+        "warnings": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/WarningRecord"
+          },
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "required": [
+        "request_id",
+        "errors"
+      ],
+      "title": "ModuleRunFailure",
+      "type": "object"
+    },
+    "ModuleRunSuccess": {
+      "additionalProperties": false,
+      "properties": {
+        "artifacts": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/ModuleArtifact"
+          },
+          "title": "Artifacts",
+          "type": "array"
+        },
+        "contract_version": {
+          "const": "1.0.0",
+          "default": "1.0.0",
+          "title": "Contract Version",
+          "type": "string"
+        },
+        "engine_schema_version": {
+          "default": "1.3.0",
+          "title": "Engine Schema Version",
+          "type": "string"
+        },
+        "engine_version": {
+          "default": "0.4.0",
+          "title": "Engine Version",
+          "type": "string"
+        },
+        "module": {
+          "const": "rnpv_roi_calculator",
+          "default": "rnpv_roi_calculator",
+          "title": "Module",
+          "type": "string"
+        },
+        "module_version": {
+          "default": "0.4.0",
+          "title": "Module Version",
+          "type": "string"
+        },
+        "payload": {
+          "$ref": "#/$defs/AnalysisResult"
+        },
+        "provenance": {
+          "items": {
+            "$ref": "#/$defs/EvidenceReference"
+          },
+          "title": "Provenance",
+          "type": "array"
+        },
+        "request_id": {
+          "minLength": 1,
+          "title": "Request Id",
+          "type": "string"
+        },
+        "status": {
+          "const": "ok",
+          "default": "ok",
+          "title": "Status",
+          "type": "string"
+        },
+        "warnings": {
+          "items": {
+            "$ref": "#/$defs/WarningRecord"
+          },
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "required": [
+        "request_id",
+        "payload",
+        "warnings",
+        "provenance"
+      ],
+      "title": "ModuleRunSuccess",
+      "type": "object"
+    },
+    "PatientOOPBasis": {
+      "description": "How an access estimate obtained its annual patient out-of-pocket amount.",
+      "enum": [
+        "EXPLICIT_ANNUAL_PATIENT_OOP",
+        "ZERO_PATIENT_COST_SHARE",
+        "MANUFACTURER_NET_PROXY",
+        "UNKNOWN"
+      ],
+      "title": "PatientOOPBasis",
+      "type": "string"
+    },
+    "PriceBasis": {
+      "description": "Price bases that must never be silently combined.",
+      "enum": [
+        "LIST",
+        "PUBLIC_REIMBURSEMENT",
+        "ESTIMATED_NET",
+        "OBSERVED_NET"
+      ],
+      "title": "PriceBasis",
+      "type": "string"
+    },
+    "PriceCorridor": {
+      "additionalProperties": false,
+      "description": "Feasible and comparable-calibrated annual net-price bounds.",
+      "properties": {
+        "basis": {
+          "$ref": "#/$defs/PriceBasis"
+        },
+        "candidate_list_price": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Candidate List Price"
+        },
+        "commercial_floor": {
+          "title": "Commercial Floor",
+          "type": "number"
+        },
+        "comparable_anchor_lower": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Comparable Anchor Lower"
+        },
+        "comparable_anchor_median": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Comparable Anchor Median"
+        },
+        "comparable_anchor_upper": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Comparable Anchor Upper"
+        },
+        "currency": {
+          "title": "Currency",
+          "type": "string"
+        },
+        "estimated_gross_to_net_fraction": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Estimated Gross To Net Fraction"
+        },
+        "feasible_lower": {
+          "title": "Feasible Lower",
+          "type": "number"
+        },
+        "feasible_upper": {
+          "title": "Feasible Upper",
+          "type": "number"
+        },
+        "likely_lower": {
+          "title": "Likely Lower",
+          "type": "number"
+        },
+        "likely_midpoint": {
+          "title": "Likely Midpoint",
+          "type": "number"
+        },
+        "likely_upper": {
+          "title": "Likely Upper",
+          "type": "number"
+        },
+        "payer_affordability_ceiling": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Payer Affordability Ceiling"
+        },
+        "selected_annual_net_price": {
+          "title": "Selected Annual Net Price",
+          "type": "number"
+        },
+        "value_based_ceiling": {
+          "title": "Value Based Ceiling",
+          "type": "number"
+        }
+      },
+      "required": [
+        "basis",
+        "currency",
+        "feasible_lower",
+        "feasible_upper",
+        "likely_lower",
+        "likely_midpoint",
+        "likely_upper",
+        "selected_annual_net_price",
+        "value_based_ceiling",
+        "payer_affordability_ceiling",
+        "commercial_floor",
+        "comparable_anchor_lower",
+        "comparable_anchor_median",
+        "comparable_anchor_upper",
+        "candidate_list_price",
+        "estimated_gross_to_net_fraction"
+      ],
+      "title": "PriceCorridor",
+      "type": "object"
+    },
+    "PricingAnalysisSnapshot": {
+      "properties": {
+        "access_estimates": {
+          "items": {
+            "$ref": "#/$defs/AccessEstimate"
+          },
+          "title": "Access Estimates",
+          "type": "array"
+        },
+        "annual_net_price_corridor": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PriceCorridor"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "comparable_ids_by_tier": {
+          "additionalProperties": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "title": "Comparable Ids By Tier",
+          "type": "object"
+        },
+        "decision_grade": {
+          "$ref": "#/$defs/DecisionGrade"
+        },
+        "indication_id": {
+          "title": "Indication Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "indication_id",
+        "decision_grade",
+        "annual_net_price_corridor",
+        "comparable_ids_by_tier",
+        "access_estimates"
+      ],
+      "title": "PricingAnalysisSnapshot",
+      "type": "object"
+    },
+    "Recommendation": {
+      "enum": [
+        "ADVANCE",
+        "ADVANCE_WITH_EVIDENCE_GATE",
+        "OPTION_OR_PARTNER",
+        "HOLD",
+        "STOP",
+        "NOT_DECISION_GRADE"
+      ],
+      "title": "Recommendation",
+      "type": "string"
+    },
+    "SimulationAssumptions": {
+      "description": "Shared draws preserve correlation between the initial and expansion indications.",
+      "properties": {
+        "development_cost_multiplier": {
+          "$ref": "#/$defs/TriangularRange",
+          "default": {
+            "high": 1.25,
+            "low": 0.85,
+            "mode": 1.0
+          }
+        },
+        "gross_to_net_shift": {
+          "$ref": "#/$defs/TriangularRange",
+          "default": {
+            "high": 0.1,
+            "low": -0.05,
+            "mode": 0.0
+          }
+        },
+        "launch_delay_years": {
+          "$ref": "#/$defs/TriangularRange",
+          "default": {
+            "high": 2.0,
+            "low": 0.0,
+            "mode": 0.0
+          }
+        },
+        "loe_retention_multiplier": {
+          "$ref": "#/$defs/TriangularRange",
+          "default": {
+            "high": 1.25,
+            "low": 0.75,
+            "mode": 1.0
+          }
+        },
+        "patient_multiplier": {
+          "$ref": "#/$defs/TriangularRange",
+          "default": {
+            "high": 1.3,
+            "low": 0.7,
+            "mode": 1.0
+          }
+        },
+        "persistence_multiplier": {
+          "$ref": "#/$defs/TriangularRange",
+          "default": {
+            "high": 1.05,
+            "low": 0.85,
+            "mode": 1.0
+          }
+        },
+        "price_multiplier": {
+          "$ref": "#/$defs/TriangularRange",
+          "default": {
+            "high": 1.25,
+            "low": 0.75,
+            "mode": 1.0
+          }
+        }
+      },
+      "title": "SimulationAssumptions",
+      "type": "object"
+    },
+    "SimulationResult": {
+      "properties": {
+        "commercial_driver_correlation": {
+          "title": "Commercial Driver Correlation",
+          "type": "string"
+        },
+        "draw_order_contract_version": {
+          "title": "Draw Order Contract Version",
+          "type": "string"
+        },
+        "effective_protected_years": {
+          "$ref": "#/$defs/DistributionSummary"
+        },
+        "numpy_version": {
+          "title": "Numpy Version",
+          "type": "string"
+        },
+        "peak_annual_net_revenue": {
+          "$ref": "#/$defs/DistributionSummary"
+        },
+        "peak_cash_at_risk": {
+          "$ref": "#/$defs/DistributionSummary"
+        },
+        "post_loe_net_revenue": {
+          "$ref": "#/$defs/DistributionSummary"
+        },
+        "protected_net_revenue": {
+          "$ref": "#/$defs/DistributionSummary"
+        },
+        "rng_bit_generator": {
+          "title": "Rng Bit Generator",
+          "type": "string"
+        },
+        "rnpv": {
+          "$ref": "#/$defs/DistributionSummary"
+        },
+        "seed": {
+          "title": "Seed",
+          "type": "integer"
+        },
+        "simulations": {
+          "title": "Simulations",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "seed",
+        "simulations",
+        "rng_bit_generator",
+        "numpy_version",
+        "draw_order_contract_version",
+        "commercial_driver_correlation",
+        "rnpv",
+        "protected_net_revenue",
+        "post_loe_net_revenue",
+        "peak_annual_net_revenue",
+        "peak_cash_at_risk",
+        "effective_protected_years"
+      ],
+      "title": "SimulationResult",
+      "type": "object"
+    },
+    "TriangularRange": {
+      "properties": {
+        "high": {
+          "title": "High",
+          "type": "number"
+        },
+        "low": {
+          "title": "Low",
+          "type": "number"
+        },
+        "mode": {
+          "title": "Mode",
+          "type": "number"
+        }
+      },
+      "required": [
+        "low",
+        "mode",
+        "high"
+      ],
+      "title": "TriangularRange",
+      "type": "object"
+    },
+    "ValueDecomposition": {
+      "properties": {
+        "cogs": {
+          "title": "Cogs",
+          "type": "number"
+        },
+        "commercial_costs": {
+          "title": "Commercial Costs",
+          "type": "number"
+        },
+        "development_costs": {
+          "title": "Development Costs",
+          "type": "number"
+        },
+        "expansion_increment_discounted_fcf": {
+          "title": "Expansion Increment Discounted Fcf",
+          "type": "number"
+        },
+        "gross_revenue": {
+          "title": "Gross Revenue",
+          "type": "number"
+        },
+        "gross_to_net_deductions": {
+          "title": "Gross To Net Deductions",
+          "type": "number"
+        },
+        "initial_indication_discounted_fcf": {
+          "title": "Initial Indication Discounted Fcf",
+          "type": "number"
+        },
+        "post_loe_net_revenue": {
+          "title": "Post Loe Net Revenue",
+          "type": "number"
+        },
+        "protected_net_revenue": {
+          "title": "Protected Net Revenue",
+          "type": "number"
+        },
+        "taxes": {
+          "title": "Taxes",
+          "type": "number"
+        }
+      },
+      "required": [
+        "gross_revenue",
+        "gross_to_net_deductions",
+        "protected_net_revenue",
+        "post_loe_net_revenue",
+        "cogs",
+        "commercial_costs",
+        "development_costs",
+        "taxes",
+        "initial_indication_discounted_fcf",
+        "expansion_increment_discounted_fcf"
+      ],
+      "title": "ValueDecomposition",
+      "type": "object"
+    },
+    "WarningRecord": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "title": "Code",
+          "type": "string"
+        },
+        "field": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Field"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        },
+        "severity": {
+          "$ref": "#/$defs/WarningSeverity",
+          "default": "WARNING"
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "title": "WarningRecord",
+      "type": "object"
+    },
+    "WarningSeverity": {
+      "enum": [
+        "INFO",
+        "WARNING",
+        "ERROR"
+      ],
+      "title": "WarningSeverity",
+      "type": "string"
+    }
+  },
+  "$id": "urn:reagent-labrador:rnpv_roi_calculator:output:1.0.0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "discriminator": {
+    "mapping": {
+      "error": "#/$defs/ModuleRunFailure",
+      "ok": "#/$defs/ModuleRunSuccess"
+    },
+    "propertyName": "status"
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/ModuleRunSuccess"
+    },
+    {
+      "$ref": "#/$defs/ModuleRunFailure"
+    }
+  ],
+  "title": "rNPV ROI Calculator Output v1"
+}

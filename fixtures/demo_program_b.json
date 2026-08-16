@@ -1,0 +1,176 @@
+{
+  "program_id": "SYNTHETIC-LAB-002",
+  "program_name": "LAB-002 synthetic follow-on program",
+  "target": "SYNTHETIC_TARGET_F",
+  "modality": "PEPTIDE",
+  "molecule_identifier": "SYNTHETIC_SEQUENCE_B_NOT_FOR_USE",
+  "route": "SUBCUTANEOUS_SELF",
+  "base_year": 2026,
+  "valuation_year": 2026,
+  "currency": "USD",
+  "initial_indication": {
+    "indication_id": "syn-indication-a",
+    "name": "Synthetic biomarker-positive chronic syndrome",
+    "therapeutic_area": "Synthetic immunology",
+    "target_population": "Adults with severe biomarker-positive synthetic syndrome",
+    "line_of_therapy": "Third line",
+    "geography": "United States",
+    "currency": "USD",
+    "launch_year": 2030,
+    "severity": "Severe",
+    "biomarker": "SYN-BIO-A positive",
+    "route": "SUBCUTANEOUS_SELF",
+    "comparator_ids": [
+      "syn-comp-primary",
+      "syn-comp-net-anchor"
+    ],
+    "population": {
+      "eligible_patients": 24500,
+      "prevalent_backlog_patients": 9800,
+      "annual_incident_patients": 3300,
+      "diagnosed_fraction": 0.74,
+      "clinically_eligible_fraction": 0.66,
+      "overlap_with_initial_fraction": 0,
+      "cannibalization_fraction": 0,
+      "evidence": {
+        "eligible_patients": {
+          "source_id": "SYNTHETIC-DEMO-B-POPULATION",
+          "evidence_type": "SYNTHETIC",
+          "grade": "SYNTHETIC",
+          "synthetic": true,
+          "notes": "Fictitious population input."
+        }
+      },
+      "assumptions": {}
+    },
+    "access": {
+      "payer_type": "MIXED",
+      "universal_or_public_coverage": false,
+      "coverage_fraction": 0.7,
+      "prior_authorization_pass_fraction": 0.65,
+      "initiation_fraction": 0.8,
+      "provider_capacity_fraction": 0.82,
+      "patient_cost_share_fraction": 0.06,
+      "adoption_by_year": {
+        "0": 0.16,
+        "1": 0.34,
+        "2": 0.5,
+        "3": 0.62
+      },
+      "restrictions": ["Synthetic prior authorization"],
+      "evidence": {
+        "access_curve": {
+          "source_id": "SYNTHETIC-DEMO-B-ACCESS",
+          "evidence_type": "SYNTHETIC",
+          "grade": "SYNTHETIC",
+          "synthetic": true,
+          "notes": "Fictitious access input."
+        }
+      },
+      "assumptions": {}
+    },
+    "income_bands": [],
+    "evidence": {
+      "indication_definition": {
+        "source_id": "SYNTHETIC-DEMO-B-INDICATION",
+        "evidence_type": "SYNTHETIC",
+        "grade": "SYNTHETIC",
+        "synthetic": true,
+        "notes": "Fictitious indication fixture."
+      }
+    },
+    "assumptions": {
+      "incremental_qalys": 0.64,
+      "willingness_to_pay_per_qaly": 150000,
+      "comparator_total_cost": 225000,
+      "new_non_drug_total_cost": 205000,
+      "expected_treatment_years": 2,
+      "annual_comparator_drug_cost": 95000,
+      "annual_non_drug_cost_offsets": 9000,
+      "annual_payer_budget_limit": 300000000,
+      "annual_manufacturer_cost": 9400,
+      "required_gross_margin_fraction": 0.72,
+      "candidate_list_price": 124000,
+      "patient_affordability_rate": 0.68,
+      "gross_to_net_rate": 0.2,
+      "annual_persistence_rate": 0.74,
+      "dose_intensity": 0.9,
+      "cogs_per_full_dose_patient": 9400,
+      "variable_commercial_cost_per_patient": 2200,
+      "fixed_commercial_cost_per_year": 22000000,
+      "backlog_release_years": 3,
+      "incidence_growth_rate": 0.01,
+      "peak_adoption_rate": 0.62,
+      "adoption_ramp_years": 4,
+      "note": "All values are synthetic and NOT_DECISION_GRADE."
+    }
+  },
+  "expansion_indications": [],
+  "patent": {
+    "filing_year": 2026,
+    "base_term_years": 20,
+    "extension_years": 0.5,
+    "regulatory_exclusivity_end_year": null,
+    "evidence": {
+      "filing_year": {
+        "source_id": "SYNTHETIC-DEMO-B-PATENT",
+        "evidence_type": "SYNTHETIC",
+        "grade": "SYNTHETIC",
+        "synthetic": true,
+        "notes": "Fictitious patent timing; not legal analysis."
+      }
+    },
+    "assumptions": {}
+  },
+  "development": {
+    "current_stage": "Phase 1",
+    "stage_costs": {
+      "phase_1": 24000000,
+      "phase_2": 56000000,
+      "phase_3": 140000000,
+      "filing": 22000000
+    },
+    "stage_durations_years": {
+      "phase_1": 1,
+      "phase_2": 1,
+      "phase_3": 1,
+      "filing": 1
+    },
+    "stage_success_probabilities": {
+      "phase_1": 0.58,
+      "phase_2": 0.38,
+      "phase_3": 0.65,
+      "filing": 0.84
+    },
+    "program_probability_of_approval": 0.1203384,
+    "evidence": {
+      "development_inputs": {
+        "source_id": "SYNTHETIC-DEMO-B-DEVELOPMENT",
+        "evidence_type": "SYNTHETIC",
+        "grade": "SYNTHETIC",
+        "synthetic": true,
+        "notes": "Fictitious development fixture."
+      }
+    },
+    "assumptions": {}
+  },
+  "evidence": {
+    "program": {
+      "source_id": "SYNTHETIC-DEMO-PROGRAM-B",
+      "evidence_type": "SYNTHETIC",
+      "grade": "SYNTHETIC",
+      "synthetic": true,
+      "notes": "All program data are fictitious."
+    }
+  },
+  "assumptions": {
+    "forecast_end_year": 2050,
+    "discount_rate": 0.1,
+    "tax_rate": 0.21,
+    "loe_price_retention": [0.55, 0.35, 0.25, 0.18, 0.12],
+    "loe_volume_retention": [0.75, 0.55, 0.4, 0.3, 0.2],
+    "synthetic": true,
+    "decision_grade": "NOT_DECISION_GRADE",
+    "note": "Second synthetic fixture for portfolio workflow testing only."
+  }
+}

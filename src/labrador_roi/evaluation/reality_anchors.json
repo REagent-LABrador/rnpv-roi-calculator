@@ -1,0 +1,166 @@
+{
+  "_about": "Tool-agnostic reality-grounding anchors for a pharma ROI / rNPV tool (RA / inflammation & autoimmunity, US-centric). Ported without widening bands from rNPV Copilot commit fca049d. Each anchor checks a live model output or a separately reported configuration value against a cited band.",
+  "_bands": "expected = [lo, hi]; hi = 1e18 means an open upper bound (>lo).",
+  "_context": {
+    "indication": "rheumatoid arthritis (RA) / I&I",
+    "geography": "US",
+    "currency": "USD",
+    "year_basis": "FY2024 for revenue facts"
+  },
+  "anchors": [
+    {
+      "id": "pos_loa_chain",
+      "bucket": "computation",
+      "measure": "cumulative probability of technical+regulatory success (LOA) from Phase 1 to approval for an AUTOIMMUNE asset = product of the four phase-transition probabilities (P1->2 x P2->3 x P3->NDA x NDA->appr)",
+      "scenario": {"therapeutic_area": "autoimmune", "from_phase": "phase1"},
+      "claim": "Autoimmune LOA from Phase 1 = 10.7% (0.552 x 0.314 x 0.653 x 0.941)",
+      "expected": [0.104, 0.110],
+      "unit": "probability",
+      "source": "BIO / Biomedtracker / QLS, Clinical Development Success Rates 2011-2020, Fig 2",
+      "source_url": "https://go.bio.org/rs/490-EHZ-999/images/ClinicalDevelopmentSuccessRates2011_2020.pdf"
+    },
+    {
+      "id": "addressable_us",
+      "bucket": "computation",
+      "measure": "US RA advanced-therapy-eligible addressable patients = adult_pop x prevalence x diagnosed x treated x eligible(moderate-severe, b/tsDMARD-eligible)",
+      "scenario": {"indication": "rheumatoid arthritis", "geo": "US", "line": "advanced therapy (bDMARD/JAK-eligible)"},
+      "claim": "US RA advanced-therapy pool ~300k-560k (~1.3M diagnosed x 25-45% b/tsDMARD-eligible)",
+      "expected": [300000, 560000],
+      "unit": "patients",
+      "source": "GBD/CDC RA adult prevalence ~0.5-1%; Adelphi RWE b/tsDMARD utilization",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/34487340/"
+    },
+    {
+      "id": "mean_time_on_therapy",
+      "bucket": "computation",
+      "measure": "mean years a starting patient remains ON a chronic I&I therapy = integral of the on-treatment survival curve (persistence), for a moderate-persistence route",
+      "scenario": {"indication": "rheumatoid arthritis", "route": "oral/SC advanced therapy"},
+      "claim": "Mean time on therapy ~3.0-5.2y (anti-TNF median persistence 3.3-3.8y; 1L TNFi mean ~5.35y)",
+      "expected": [3.0, 5.2],
+      "unit": "years",
+      "source": "Pombo-Suarez et al. 2015 (RA anti-TNF persistence); Rhumadata registry",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/25141123/"
+    },
+    {
+      "id": "net_price_oral",
+      "bucket": "computation",
+      "measure": "modeled annual NET price (post-rebate, NOT WAC) for an ORAL advanced-therapy RA drug",
+      "scenario": {"indication": "rheumatoid arthritis", "route": "oral", "geo": "US"},
+      "claim": "Oral advanced-therapy NET price ~$18k-40k/yr (below biologic WAC; net != WAC)",
+      "expected": [18000, 40000],
+      "unit": "USD/year",
+      "source": "SSR Health SEC-rebate-derived nets: adalimumab ~$27-30k, tofacitinib ~$30k, upadacitinib ~$33-45k (WAC ~$83k)",
+      "source_url": "https://www.managedhealthcareexecutive.com/view/introduction-of-biosimilars-led-to-more-rebates-on-humira"
+    },
+    {
+      "id": "smallmol_cogs_pct",
+      "bucket": "computation",
+      "measure": "small-molecule per-patient annual COGS as a FRACTION of annual net revenue, for a representative drug-like NCE (NOT aspirin)",
+      "scenario": {"modality": "small_molecule", "example_smiles": "CC1CCN(CC1N(C)c1ncnc2[nH]ccc12)C(=O)CC#N (tofacitinib, SAscore ~3.7)"},
+      "claim": "Small-molecule API COGS is a trivial share of revenue -> <8% of net (gross margin >92%)",
+      "expected": [0.0, 0.08],
+      "unit": "fraction",
+      "source": "BioProcess Intl — branded small-molecule COGS <5-10% of sales",
+      "source_url": "https://bioprocessintl.com/"
+    },
+    {
+      "id": "peptide_cogs",
+      "bucket": "computation",
+      "measure": "peptide per-patient annual COGS (small-scale SPPS cost model), for a ~20-mer at a mid dose; must be materially > small-molecule but bounded",
+      "scenario": {"modality": "peptide", "length": 20, "dose_mg_day": 50},
+      "claim": "Peptide per-patient COGS ~$3k-60k/yr (small-scale SPPS; >> small-mol, but bounded)",
+      "expected": [3000, 60000],
+      "unit": "USD/patient/year",
+      "source": "SPPS crude-yield decay Y=e_step^N; Fmoc-AA $50-500/g (Behrendt 2016)",
+      "source_url": "https://onlinelibrary.wiley.com/doi/10.1002/psc.2836"
+    },
+    {
+      "id": "modality_pos_ratio",
+      "bucket": "computation",
+      "measure": "ratio of the tool's PEPTIDE probability-of-success factor to its SMALL-MOLECULE factor",
+      "scenario": {},
+      "claim": "Peptide/small-molecule LOA ratio ~1.03-1.12 (BIO Fig 10b: peptide 8.0% / small-molecule 7.5% = 1.067). Do NOT use the FDA-classification table (NME 5.7% / Biologic 9.1%) for a small-mol-vs-peptide axis.",
+      "expected": [1.03, 1.12],
+      "unit": "ratio",
+      "source": "BIO / Biomedtracker / QLS 2011-2020, Fig 10b (biochemical modality LOA)",
+      "source_url": "https://go.bio.org/rs/490-EHZ-999/images/ClinicalDevelopmentSuccessRates2011_2020.pdf"
+    },
+    {
+      "id": "enpv_headline_order",
+      "bucket": "computation",
+      "measure": "the HEADLINE risk-adjusted NPV (eNPV) the tool ships, for a de-risked Phase-3 RA single-indication small-molecule asset (order of magnitude only)",
+      "scenario": {"indication": "rheumatoid arthritis", "modality": "small_molecule", "route": "sc/oral", "current_phase": "phase3"},
+      "claim": "eNPV of a de-risked Phase-3 RA single-indication asset lands in $30M-$3.5B (order-of-magnitude external anchor; wide by nature)",
+      "expected": [30000000, 3500000000],
+      "unit": "USD",
+      "source": "single-asset RA advanced-therapy rNPV / deal-comp range (soft anchor — no clean public single-asset dataset)",
+      "source_url": ""
+    },
+    {
+      "id": "autoimmune_loa_bracket",
+      "bucket": "cross_source",
+      "measure": "cumulative autoimmune LOA from Phase 1 (same measure as pos_loa_chain), checked against a band spanned by TWO INDEPENDENT datasets",
+      "scenario": {"therapeutic_area": "autoimmune", "from_phase": "phase1"},
+      "claim": "Autoimmune LOA sits within the range bracketed by two independent estimates: BIO 10.7% and Wong-Siah-Lo 2019 (overall 13.8%, immunology higher)",
+      "expected": [0.09, 0.16],
+      "unit": "probability",
+      "source": "BIO 2011-2020 (10.7%) AND Wong, Siah & Lo 2019, Biostatistics 20(2):273 (13.8% overall)",
+      "source_url": "https://academic.oup.com/biostatistics/article/20/2/273/4817524"
+    },
+    {
+      "id": "prevalence_10x_breaches",
+      "bucket": "control",
+      "measure": "FALSIFICATION CONTROL: run the addressable-population computation with prevalence multiplied by 10x; the result MUST exceed the addressable_us upper bound (560k). If it does not, your bands are unfalsifiable.",
+      "scenario": {"indication": "rheumatoid arthritis", "geo": "US", "corruption": "prevalence x10"},
+      "claim": "A 10x prevalence corruption MUST breach the addressable band ceiling (proves bands can fail)",
+      "expected": [560000, 1e18],
+      "unit": "patients",
+      "source": "negative control (methodology, not a citation)",
+      "source_url": ""
+    },
+    {
+      "id": "config.ira_smallmol",
+      "bucket": "config",
+      "measure": "the IRA Medicare MFP-price-effect year the tool uses for a small-molecule / NDA asset",
+      "scenario": {"modality": "small_molecule"},
+      "claim": "IRA MFP price takes effect 9 years post-approval for small molecules / NDAs (selection at 7y)",
+      "expected": [9, 9],
+      "unit": "years",
+      "source": "CRS R47872; KFF (statutory)",
+      "source_url": "https://www.kff.org/medicare/issue-brief/faqs-about-the-inflation-reduction-acts-medicare-drug-price-negotiation-program/"
+    },
+    {
+      "id": "config.ira_biologic",
+      "bucket": "config",
+      "measure": "the IRA Medicare MFP-price-effect year the tool uses for a biologic / BLA asset",
+      "scenario": {"modality": "biologic"},
+      "claim": "IRA MFP price takes effect 13 years post-approval for biologics / BLAs (selection at 11y). NOTE: the clock follows the APPROVAL PATHWAY, not chemistry — a synthetic peptide filed as an NDA gets 9y.",
+      "expected": [13, 13],
+      "unit": "years",
+      "source": "CRS R47872; KFF (statutory)",
+      "source_url": "https://www.kff.org/medicare/issue-brief/faqs-about-the-inflation-reduction-acts-medicare-drug-price-negotiation-program/"
+    },
+    {
+      "id": "config.discount_rate",
+      "bucket": "config",
+      "measure": "the rNPV discount rate the tool uses",
+      "scenario": {},
+      "claim": "rNPV discount rate is a house CONVENTION of ~10-12% (risk lives in the PoS weights). It is NOT an empirical fact; stage-dependent WACC ranges 8-20% and a pure-rNPV school uses near-risk-free 3-5%.",
+      "expected": [0.10, 0.12],
+      "unit": "rate",
+      "source": "Alacrita, 'Valuing Pharmaceutical Assets: When to Use NPV vs rNPV'",
+      "source_url": "https://www.alacrita.com/whitepapers/valuing-pharmaceutical-assets-when-to-use-npv-vs-rnpv"
+    },
+    {
+      "id": "config.phase3_cost",
+      "bucket": "config",
+      "measure": "the per-phase Phase-3 out-of-pocket trial cost input the tool uses for a small molecule",
+      "scenario": {"modality": "small_molecule", "phase": "phase3"},
+      "claim": "Phase-3 out-of-pocket cost ~$245.8M (small molecule). Do NOT use the $2.6B capitalized-per-approved-drug figure per-asset (it already includes attrition + cost of capital your PoS chain models).",
+      "expected": [240000000, 252000000],
+      "unit": "USD",
+      "source": "DiMasi, Grabowski & Hansen 2016, J Health Econ (Tufts CSDD)",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/26928437/"
+    }
+  ]
+}

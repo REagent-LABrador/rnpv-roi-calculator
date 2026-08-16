@@ -1,0 +1,1021 @@
+{
+  "comparables": [
+    {
+      "access_restrictions": [
+        "Synthetic biomarker confirmation"
+      ],
+      "comparable_id": "syn-comp-primary",
+      "evidence": {},
+      "geography": "United States",
+      "indication": "Synthetic biomarker-positive chronic syndrome",
+      "line_of_therapy": "Third line",
+      "name": "SYNTHETIC AlphaPeptide",
+      "notes": "Primary-match interface fixture; entirely synthetic.",
+      "payer_type": "MIXED",
+      "price": {
+        "amount": 148000.0,
+        "basis": "LIST",
+        "currency": "USD",
+        "evidence": {
+          "accessed_at": null,
+          "citation": null,
+          "evidence_type": "SYNTHETIC",
+          "grade": "SYNTHETIC",
+          "notes": "Fictitious list-price fixture; not an observed product price.",
+          "source_date": null,
+          "source_id": "SYNTHETIC-DEMO-COMP-A-PRICE",
+          "source_url": null,
+          "synthetic": true
+        },
+        "period": "ANNUAL",
+        "price_year": 2026,
+        "units_per_year": null
+      },
+      "route": "SUBCUTANEOUS_SELF",
+      "target_or_mechanism": "SYNTHETIC_TARGET_A",
+      "target_population": "Adults with severe biomarker-positive synthetic syndrome",
+      "therapeutic_area": "Synthetic immunology"
+    },
+    {
+      "access_restrictions": [
+        "Synthetic biomarker confirmation"
+      ],
+      "comparable_id": "syn-comp-net-anchor",
+      "evidence": {},
+      "geography": "United States",
+      "indication": "Synthetic biomarker-positive chronic syndrome",
+      "line_of_therapy": "Third line",
+      "name": "SYNTHETIC AlphaPeptide modeled-net scenario",
+      "notes": "Synthetic same-context net scenario kept separate from the synthetic list price.",
+      "payer_type": "MIXED",
+      "price": {
+        "amount": 115000.0,
+        "basis": "ESTIMATED_NET",
+        "currency": "USD",
+        "evidence": {
+          "accessed_at": null,
+          "citation": null,
+          "evidence_type": "SYNTHETIC",
+          "grade": "SYNTHETIC",
+          "notes": "Fictitious modeled-net scenario; not an observed manufacturer net price.",
+          "source_date": null,
+          "source_id": "SYNTHETIC-DEMO-COMP-A-NET-SCENARIO",
+          "source_url": null,
+          "synthetic": true
+        },
+        "period": "ANNUAL",
+        "price_year": 2026,
+        "units_per_year": null
+      },
+      "route": "SUBCUTANEOUS_SELF",
+      "target_or_mechanism": "SYNTHETIC_TARGET_A",
+      "target_population": "Adults with severe biomarker-positive synthetic syndrome",
+      "therapeutic_area": "Synthetic immunology"
+    },
+    {
+      "access_restrictions": [
+        "Synthetic prior therapy requirement"
+      ],
+      "comparable_id": "syn-comp-expansion-net",
+      "evidence": {},
+      "geography": "United States",
+      "indication": "Synthetic refractory inflammatory syndrome",
+      "line_of_therapy": "Second line",
+      "name": "SYNTHETIC EpsilonPeptide modeled-net scenario",
+      "notes": "Synthetic expansion match kept separate from all list-price observations.",
+      "payer_type": "MIXED",
+      "price": {
+        "amount": 48000.0,
+        "basis": "ESTIMATED_NET",
+        "currency": "USD",
+        "evidence": {
+          "accessed_at": null,
+          "citation": null,
+          "evidence_type": "SYNTHETIC",
+          "grade": "SYNTHETIC",
+          "notes": "Fictitious expansion modeled-net scenario; not observed manufacturer net.",
+          "source_date": null,
+          "source_id": "SYNTHETIC-DEMO-COMP-EXPANSION-NET",
+          "source_url": null,
+          "synthetic": true
+        },
+        "period": "ANNUAL",
+        "price_year": 2026,
+        "units_per_year": null
+      },
+      "route": "SUBCUTANEOUS_SELF",
+      "target_or_mechanism": "SYNTHETIC_TARGET_E",
+      "target_population": "Adults with refractory synthetic inflammatory syndrome",
+      "therapeutic_area": "Synthetic immunology"
+    },
+    {
+      "access_restrictions": [
+        "Synthetic step therapy"
+      ],
+      "comparable_id": "syn-comp-secondary",
+      "evidence": {},
+      "geography": "United States",
+      "indication": "Synthetic biomarker-positive chronic syndrome",
+      "line_of_therapy": "Second line",
+      "name": "SYNTHETIC BetaPeptide",
+      "notes": "Secondary-match interface fixture; entirely synthetic.",
+      "payer_type": "PUBLIC_MULTIPAYER",
+      "price": {
+        "amount": 121500.0,
+        "basis": "PUBLIC_REIMBURSEMENT",
+        "currency": "USD",
+        "evidence": {
+          "accessed_at": null,
+          "citation": null,
+          "evidence_type": "SYNTHETIC",
+          "grade": "SYNTHETIC",
+          "notes": "Fictitious public-reimbursement fixture; not manufacturer net.",
+          "source_date": null,
+          "source_id": "SYNTHETIC-DEMO-COMP-B-PRICE",
+          "source_url": null,
+          "synthetic": true
+        },
+        "period": "ANNUAL",
+        "price_year": 2026,
+        "units_per_year": null
+      },
+      "route": "SUBCUTANEOUS_SELF",
+      "target_or_mechanism": "SYNTHETIC_TARGET_B",
+      "target_population": "Adults with biomarker-positive synthetic syndrome",
+      "therapeutic_area": "Synthetic immunology"
+    },
+    {
+      "access_restrictions": [],
+      "comparable_id": "syn-comp-context",
+      "evidence": {},
+      "geography": "United States",
+      "indication": "Synthetic inflammatory syndrome",
+      "line_of_therapy": "First line",
+      "name": "SYNTHETIC GammaSmallMolecule",
+      "notes": "Context-only interface fixture; entirely synthetic.",
+      "payer_type": "COMMERCIAL_INSURANCE",
+      "price": {
+        "amount": 76000.0,
+        "basis": "ESTIMATED_NET",
+        "currency": "USD",
+        "evidence": {
+          "accessed_at": null,
+          "citation": null,
+          "evidence_type": "SYNTHETIC",
+          "grade": "SYNTHETIC",
+          "notes": "Fictitious analyst-estimated-net scenario, not an observed net price.",
+          "source_date": null,
+          "source_id": "SYNTHETIC-DEMO-COMP-C-PRICE",
+          "source_url": null,
+          "synthetic": true
+        },
+        "period": "ANNUAL",
+        "price_year": 2026,
+        "units_per_year": null
+      },
+      "route": "ORAL",
+      "target_or_mechanism": "SYNTHETIC_TARGET_C",
+      "target_population": "Adults with moderate synthetic inflammatory syndrome",
+      "therapeutic_area": "Synthetic immunology"
+    },
+    {
+      "access_restrictions": [
+        "Synthetic HTA restriction"
+      ],
+      "comparable_id": "syn-comp-excluded",
+      "evidence": {},
+      "geography": "United Kingdom",
+      "indication": "Synthetic solid tumor",
+      "line_of_therapy": "First line",
+      "name": "SYNTHETIC DeltaInfusion",
+      "notes": "Expected to remain excluded; no implicit FX conversion is allowed.",
+      "payer_type": "PUBLIC_SINGLE_PAYER",
+      "price": {
+        "amount": 92000.0,
+        "basis": "LIST",
+        "currency": "GBP",
+        "evidence": {
+          "accessed_at": null,
+          "citation": null,
+          "evidence_type": "SYNTHETIC",
+          "grade": "SYNTHETIC",
+          "notes": "Fictitious cross-currency excluded-comparable fixture.",
+          "source_date": null,
+          "source_id": "SYNTHETIC-DEMO-COMP-D-PRICE",
+          "source_url": null,
+          "synthetic": true
+        },
+        "period": "COURSE",
+        "price_year": 2026,
+        "units_per_year": 1.0
+      },
+      "route": "INTRAVENOUS",
+      "target_or_mechanism": "SYNTHETIC_TARGET_D",
+      "target_population": "Adults with metastatic synthetic solid tumor",
+      "therapeutic_area": "Synthetic oncology"
+    }
+  ],
+  "contract_version": "1.0.0",
+  "execution": {
+    "seed": 42,
+    "simulation_assumptions": {
+      "development_cost_multiplier": {
+        "high": 1.25,
+        "low": 0.85,
+        "mode": 1.0
+      },
+      "gross_to_net_shift": {
+        "high": 0.1,
+        "low": -0.05,
+        "mode": 0.0
+      },
+      "launch_delay_years": {
+        "high": 2.0,
+        "low": 0.0,
+        "mode": 0.0
+      },
+      "loe_retention_multiplier": {
+        "high": 1.25,
+        "low": 0.75,
+        "mode": 1.0
+      },
+      "patient_multiplier": {
+        "high": 1.3,
+        "low": 0.7,
+        "mode": 1.0
+      },
+      "persistence_multiplier": {
+        "high": 1.05,
+        "low": 0.85,
+        "mode": 1.0
+      },
+      "price_multiplier": {
+        "high": 1.25,
+        "low": 0.75,
+        "mode": 1.0
+      }
+    },
+    "simulations": 128
+  },
+  "module": "rnpv_roi_calculator",
+  "program": {
+    "assumptions": {
+      "decision_grade": "NOT_DECISION_GRADE",
+      "discount_rate": 0.1,
+      "expansion_price_spillover_rate": 0.03,
+      "forecast_end_year": 2050,
+      "loe_price_retention": [
+        0.55,
+        0.35,
+        0.25,
+        0.18,
+        0.12
+      ],
+      "loe_volume_retention": [
+        0.75,
+        0.55,
+        0.4,
+        0.3,
+        0.2
+      ],
+      "note": "Synthetic fixture for demonstration and testing only.",
+      "shared_commercial_cost_savings_rate": 0.2,
+      "synthetic": true,
+      "tax_rate": 0.21
+    },
+    "base_year": 2026,
+    "currency": "USD",
+    "development": {
+      "assumptions": {
+        "expansion_stage_costs": {
+          "filing": 12000000,
+          "phase_2": 35000000,
+          "phase_3": 85000000
+        },
+        "expansion_stage_durations_years": {
+          "filing": 1,
+          "phase_2": 2,
+          "phase_3": 2
+        },
+        "expansion_stage_success_probabilities": {
+          "filing": 0.88,
+          "phase_2": 0.45,
+          "phase_3": 0.7
+        }
+      },
+      "current_stage": "Preclinical",
+      "evidence": {
+        "development_inputs": {
+          "accessed_at": null,
+          "citation": null,
+          "evidence_type": "SYNTHETIC",
+          "grade": "SYNTHETIC",
+          "notes": "Fictitious development path and probabilities.",
+          "source_date": null,
+          "source_id": "SYNTHETIC-DEMO-DEVELOPMENT",
+          "source_url": null,
+          "synthetic": true
+        }
+      },
+      "program_probability_of_approval": 0.106597344,
+      "stage_costs": {
+        "filing": 18000000.0,
+        "phase_1": 18000000.0,
+        "phase_2": 42000000.0,
+        "phase_3": 115000000.0,
+        "preclinical": 9000000.0
+      },
+      "stage_durations_years": {
+        "filing": 1.0,
+        "phase_1": 1.0,
+        "phase_2": 2.0,
+        "phase_3": 2.0,
+        "preclinical": 1.0
+      },
+      "stage_order": [],
+      "stage_success_probabilities": {
+        "filing": 0.86,
+        "phase_1": 0.62,
+        "phase_2": 0.42,
+        "phase_3": 0.68,
+        "preclinical": 0.7
+      }
+    },
+    "evidence": {
+      "program": {
+        "accessed_at": null,
+        "citation": null,
+        "evidence_type": "SYNTHETIC",
+        "grade": "SYNTHETIC",
+        "notes": "All program data are fictitious and only demonstrate software behavior.",
+        "source_date": null,
+        "source_id": "SYNTHETIC-DEMO-PROGRAM",
+        "source_url": null,
+        "synthetic": true
+      }
+    },
+    "expansion_indications": [
+      {
+        "access": {
+          "adoption_by_year": {
+            "0": 0.1,
+            "1": 0.25,
+            "2": 0.4,
+            "3": 0.54,
+            "4": 0.6
+          },
+          "annual_patient_oop": null,
+          "assumptions": {},
+          "coverage_fraction": 0.71,
+          "evidence": {
+            "access_curve": {
+              "accessed_at": null,
+              "citation": null,
+              "evidence_type": "SYNTHETIC",
+              "grade": "SYNTHETIC",
+              "notes": "Fictitious expansion access fixture.",
+              "source_date": null,
+              "source_id": "SYNTHETIC-DEMO-ACCESS-B",
+              "source_url": null,
+              "synthetic": true
+            },
+            "coverage_fraction": {
+              "accessed_at": null,
+              "citation": null,
+              "evidence_type": "SYNTHETIC",
+              "grade": "SYNTHETIC",
+              "notes": null,
+              "source_date": null,
+              "source_id": "SYNTHETIC-DEMO-ACCESS-B",
+              "source_url": null,
+              "synthetic": true
+            },
+            "initiation_fraction": {
+              "accessed_at": null,
+              "citation": null,
+              "evidence_type": "SYNTHETIC",
+              "grade": "SYNTHETIC",
+              "notes": null,
+              "source_date": null,
+              "source_id": "SYNTHETIC-DEMO-ACCESS-B",
+              "source_url": null,
+              "synthetic": true
+            },
+            "patient_cost_share_fraction": {
+              "accessed_at": null,
+              "citation": null,
+              "evidence_type": "SYNTHETIC",
+              "grade": "SYNTHETIC",
+              "notes": null,
+              "source_date": null,
+              "source_id": "SYNTHETIC-DEMO-ACCESS-B",
+              "source_url": null,
+              "synthetic": true
+            },
+            "prior_authorization_pass_fraction": {
+              "accessed_at": null,
+              "citation": null,
+              "evidence_type": "SYNTHETIC",
+              "grade": "SYNTHETIC",
+              "notes": null,
+              "source_date": null,
+              "source_id": "SYNTHETIC-DEMO-ACCESS-B",
+              "source_url": null,
+              "synthetic": true
+            },
+            "provider_capacity_fraction": {
+              "accessed_at": null,
+              "citation": null,
+              "evidence_type": "SYNTHETIC",
+              "grade": "SYNTHETIC",
+              "notes": null,
+              "source_date": null,
+              "source_id": "SYNTHETIC-DEMO-ACCESS-B",
+              "source_url": null,
+              "synthetic": true
+            }
+          },
+          "initiation_fraction": 0.8,
+          "patient_cost_share_fraction": 0.08,
+          "payer_type": "MIXED",
+          "prior_authorization_pass_fraction": 0.62,
+          "provider_capacity_fraction": 0.84,
+          "restrictions": [
+            "Synthetic prior therapy requirement"
+          ],
+          "universal_or_public_coverage": false
+        },
+        "assumptions": {
+          "adoption_ramp_years": 4,
+          "annual_comparator_drug_cost": 70000,
+          "annual_gross_price": 108000,
+          "annual_manufacturer_cost": 6900,
+          "annual_non_drug_cost_offsets": 8500,
+          "annual_payer_budget_limit": 300000000,
+          "annual_persistence_rate": 0.72,
+          "backlog_release_years": 3,
+          "candidate_list_price": 108000,
+          "cogs_per_full_dose_patient": 6900,
+          "comparator_total_cost": 165000,
+          "dose_intensity": 0.92,
+          "expected_treatment_years": 2,
+          "fixed_commercial_cost_per_year": 9000000,
+          "gross_to_net_rate": 0.25,
+          "incidence_growth_rate": 0.01,
+          "incremental_qalys": 0.55,
+          "new_non_drug_total_cost": 145000,
+          "note": "Synthetic expansion and affordability fallback; shares the original patent clock.",
+          "paid_units_per_patient": 1,
+          "patient_affordability_rate": 0.7,
+          "peak_adoption_rate": 0.6,
+          "required_gross_margin_fraction": 0.75,
+          "variable_commercial_cost_per_patient": 1500,
+          "willingness_to_pay_per_qaly": 150000
+        },
+        "biomarker": null,
+        "comparator_ids": [
+          "syn-comp-expansion-net",
+          "syn-comp-net-anchor",
+          "syn-comp-secondary"
+        ],
+        "currency": "USD",
+        "evidence": {
+          "annual_comparator_drug_cost": {
+            "accessed_at": null,
+            "citation": null,
+            "evidence_type": "SYNTHETIC",
+            "grade": "SYNTHETIC",
+            "notes": null,
+            "source_date": null,
+            "source_id": "SYNTHETIC-DEMO-HEOR-B",
+            "source_url": null,
+            "synthetic": true
+          },
+          "annual_manufacturer_cost": {
+            "accessed_at": null,
+            "citation": null,
+            "evidence_type": "SYNTHETIC",
+            "grade": "SYNTHETIC",
+            "notes": null,
+            "source_date": null,
+            "source_id": "SYNTHETIC-DEMO-HEOR-B",
+            "source_url": null,
+            "synthetic": true
+          },
+          "annual_non_drug_cost_offsets": {
+            "accessed_at": null,
+            "citation": null,
+            "evidence_type": "SYNTHETIC",
+            "grade": "SYNTHETIC",
+            "notes": null,
+            "source_date": null,
+            "source_id": "SYNTHETIC-DEMO-HEOR-B",
+            "source_url": null,
+            "synthetic": true
+          },
+          "annual_payer_budget_limit": {
+            "accessed_at": null,
+            "citation": null,
+            "evidence_type": "SYNTHETIC",
+            "grade": "SYNTHETIC",
+            "notes": null,
+            "source_date": null,
+            "source_id": "SYNTHETIC-DEMO-HEOR-B",
+            "source_url": null,
+            "synthetic": true
+          },
+          "comparator_total_cost": {
+            "accessed_at": null,
+            "citation": null,
+            "evidence_type": "SYNTHETIC",
+            "grade": "SYNTHETIC",
+            "notes": null,
+            "source_date": null,
+            "source_id": "SYNTHETIC-DEMO-HEOR-B",
+            "source_url": null,
+            "synthetic": true
+          },
+          "expected_treatment_years": {
+            "accessed_at": null,
+            "citation": null,
+            "evidence_type": "SYNTHETIC",
+            "grade": "SYNTHETIC",
+            "notes": null,
+            "source_date": null,
+            "source_id": "SYNTHETIC-DEMO-HEOR-B",
+            "source_url": null,
+            "synthetic": true
+          },
+          "incremental_qalys": {
+            "accessed_at": null,
+            "citation": null,
+            "evidence_type": "SYNTHETIC",
+            "grade": "SYNTHETIC",
+            "notes": null,
+            "source_date": null,
+            "source_id": "SYNTHETIC-DEMO-HEOR-B",
+            "source_url": null,
+            "synthetic": true
+          },
+          "indication_definition": {
+            "accessed_at": null,
+            "citation": null,
+            "evidence_type": "SYNTHETIC",
+            "grade": "SYNTHETIC",
+            "notes": "The expansion indication is fictitious.",
+            "source_date": null,
+            "source_id": "SYNTHETIC-DEMO-INDICATION-B",
+            "source_url": null,
+            "synthetic": true
+          },
+          "new_non_drug_total_cost": {
+            "accessed_at": null,
+            "citation": null,
+            "evidence_type": "SYNTHETIC",
+            "grade": "SYNTHETIC",
+            "notes": null,
+            "source_date": null,
+            "source_id": "SYNTHETIC-DEMO-HEOR-B",
+            "source_url": null,
+            "synthetic": true
+          },
+          "patient_affordability_rate": {
+            "accessed_at": null,
+            "citation": null,
+            "evidence_type": "SYNTHETIC",
+            "grade": "SYNTHETIC",
+            "notes": "Explicit fallback scenario, not observed affordability evidence.",
+            "source_date": null,
+            "source_id": "SYNTHETIC-DEMO-AFFORDABILITY-B",
+            "source_url": null,
+            "synthetic": true
+          },
+          "required_gross_margin_fraction": {
+            "accessed_at": null,
+            "citation": null,
+            "evidence_type": "SYNTHETIC",
+            "grade": "SYNTHETIC",
+            "notes": null,
+            "source_date": null,
+            "source_id": "SYNTHETIC-DEMO-HEOR-B",
+            "source_url": null,
+            "synthetic": true
+          },
+          "willingness_to_pay_per_qaly": {
+            "accessed_at": null,
+            "citation": null,
+            "evidence_type": "SYNTHETIC",
+            "grade": "SYNTHETIC",
+            "notes": null,
+            "source_date": null,
+            "source_id": "SYNTHETIC-DEMO-HEOR-B",
+            "source_url": null,
+            "synthetic": true
+          }
+        },
+        "geography": "United States",
+        "income_bands": [],
+        "indication_id": "syn-indication-b",
+        "launch_year": 2034,
+        "line_of_therapy": "Second line",
+        "name": "Synthetic refractory inflammatory syndrome",
+        "population": {
+          "annual_incident_patients": 4100.0,
+          "assumptions": {},
+          "cannibalization_fraction": 0.04,
+          "clinically_eligible_fraction": 0.58,
+          "diagnosed_fraction": 0.76,
+          "eligible_patients": 31000.0,
+          "evidence": {
+            "eligible_patients": {
+              "accessed_at": null,
+              "citation": null,
+              "evidence_type": "SYNTHETIC",
+              "grade": "SYNTHETIC",
+              "notes": "Fictitious expansion fixture.",
+              "source_date": null,
+              "source_id": "SYNTHETIC-DEMO-POP-B",
+              "source_url": null,
+              "synthetic": true
+            }
+          },
+          "overlap_with_initial_fraction": 0.09,
+          "prevalent_backlog_patients": 11000.0
+        },
+        "route": "SUBCUTANEOUS_SELF",
+        "severity": "Moderate to severe",
+        "target_population": "Adults with refractory synthetic inflammatory syndrome",
+        "therapeutic_area": "Synthetic immunology"
+      }
+    ],
+    "initial_indication": {
+      "access": {
+        "adoption_by_year": {
+          "0": 0.12,
+          "1": 0.28,
+          "2": 0.45,
+          "3": 0.58,
+          "4": 0.65
+        },
+        "annual_patient_oop": null,
+        "assumptions": {
+          "note": "Coverage and access gates are independent demo assumptions."
+        },
+        "coverage_fraction": 0.74,
+        "evidence": {
+          "access_curve": {
+            "accessed_at": null,
+            "citation": null,
+            "evidence_type": "SYNTHETIC",
+            "grade": "SYNTHETIC",
+            "notes": "Fictitious access fixture.",
+            "source_date": null,
+            "source_id": "SYNTHETIC-DEMO-ACCESS-A",
+            "source_url": null,
+            "synthetic": true
+          },
+          "coverage_fraction": {
+            "accessed_at": null,
+            "citation": null,
+            "evidence_type": "SYNTHETIC",
+            "grade": "SYNTHETIC",
+            "notes": null,
+            "source_date": null,
+            "source_id": "SYNTHETIC-DEMO-ACCESS-A",
+            "source_url": null,
+            "synthetic": true
+          },
+          "initiation_fraction": {
+            "accessed_at": null,
+            "citation": null,
+            "evidence_type": "SYNTHETIC",
+            "grade": "SYNTHETIC",
+            "notes": null,
+            "source_date": null,
+            "source_id": "SYNTHETIC-DEMO-ACCESS-A",
+            "source_url": null,
+            "synthetic": true
+          },
+          "patient_cost_share_fraction": {
+            "accessed_at": null,
+            "citation": null,
+            "evidence_type": "SYNTHETIC",
+            "grade": "SYNTHETIC",
+            "notes": null,
+            "source_date": null,
+            "source_id": "SYNTHETIC-DEMO-ACCESS-A",
+            "source_url": null,
+            "synthetic": true
+          },
+          "prior_authorization_pass_fraction": {
+            "accessed_at": null,
+            "citation": null,
+            "evidence_type": "SYNTHETIC",
+            "grade": "SYNTHETIC",
+            "notes": null,
+            "source_date": null,
+            "source_id": "SYNTHETIC-DEMO-ACCESS-A",
+            "source_url": null,
+            "synthetic": true
+          },
+          "provider_capacity_fraction": {
+            "accessed_at": null,
+            "citation": null,
+            "evidence_type": "SYNTHETIC",
+            "grade": "SYNTHETIC",
+            "notes": null,
+            "source_date": null,
+            "source_id": "SYNTHETIC-DEMO-ACCESS-A",
+            "source_url": null,
+            "synthetic": true
+          }
+        },
+        "initiation_fraction": 0.82,
+        "patient_cost_share_fraction": 0.08,
+        "payer_type": "MIXED",
+        "prior_authorization_pass_fraction": 0.68,
+        "provider_capacity_fraction": 0.87,
+        "restrictions": [
+          "Synthetic biomarker confirmation",
+          "Synthetic step-therapy requirement"
+        ],
+        "universal_or_public_coverage": false
+      },
+      "assumptions": {
+        "adoption_ramp_years": 4,
+        "annual_comparator_drug_cost": 95000,
+        "annual_gross_price": 132000,
+        "annual_manufacturer_cost": 7200,
+        "annual_non_drug_cost_offsets": 12000,
+        "annual_payer_budget_limit": 350000000,
+        "annual_persistence_rate": 0.78,
+        "backlog_release_years": 3,
+        "candidate_list_price": 132000,
+        "cogs_per_full_dose_patient": 7200,
+        "comparator_total_cost": 240000,
+        "covered_lives": 48000000,
+        "dose_intensity": 0.94,
+        "expected_treatment_years": 2,
+        "fixed_commercial_cost_per_year": 18000000,
+        "gross_to_net_rate": 0.22,
+        "incidence_growth_rate": 0.012,
+        "incremental_qalys": 0.82,
+        "new_non_drug_total_cost": 215000,
+        "note": "Every value is synthetic and must remain NOT_DECISION_GRADE.",
+        "paid_units_per_patient": 1,
+        "peak_adoption_rate": 0.65,
+        "required_gross_margin_fraction": 0.75,
+        "variable_commercial_cost_per_patient": 1800,
+        "willingness_to_pay_per_qaly": 150000
+      },
+      "biomarker": "SYN-BIO-A positive",
+      "comparator_ids": [
+        "syn-comp-primary",
+        "syn-comp-net-anchor",
+        "syn-comp-secondary",
+        "syn-comp-context"
+      ],
+      "currency": "USD",
+      "evidence": {
+        "annual_comparator_drug_cost": {
+          "accessed_at": null,
+          "citation": null,
+          "evidence_type": "SYNTHETIC",
+          "grade": "SYNTHETIC",
+          "notes": null,
+          "source_date": null,
+          "source_id": "SYNTHETIC-DEMO-HEOR-A",
+          "source_url": null,
+          "synthetic": true
+        },
+        "annual_manufacturer_cost": {
+          "accessed_at": null,
+          "citation": null,
+          "evidence_type": "SYNTHETIC",
+          "grade": "SYNTHETIC",
+          "notes": null,
+          "source_date": null,
+          "source_id": "SYNTHETIC-DEMO-HEOR-A",
+          "source_url": null,
+          "synthetic": true
+        },
+        "annual_non_drug_cost_offsets": {
+          "accessed_at": null,
+          "citation": null,
+          "evidence_type": "SYNTHETIC",
+          "grade": "SYNTHETIC",
+          "notes": null,
+          "source_date": null,
+          "source_id": "SYNTHETIC-DEMO-HEOR-A",
+          "source_url": null,
+          "synthetic": true
+        },
+        "annual_payer_budget_limit": {
+          "accessed_at": null,
+          "citation": null,
+          "evidence_type": "SYNTHETIC",
+          "grade": "SYNTHETIC",
+          "notes": null,
+          "source_date": null,
+          "source_id": "SYNTHETIC-DEMO-HEOR-A",
+          "source_url": null,
+          "synthetic": true
+        },
+        "comparator_total_cost": {
+          "accessed_at": null,
+          "citation": null,
+          "evidence_type": "SYNTHETIC",
+          "grade": "SYNTHETIC",
+          "notes": null,
+          "source_date": null,
+          "source_id": "SYNTHETIC-DEMO-HEOR-A",
+          "source_url": null,
+          "synthetic": true
+        },
+        "expected_treatment_years": {
+          "accessed_at": null,
+          "citation": null,
+          "evidence_type": "SYNTHETIC",
+          "grade": "SYNTHETIC",
+          "notes": null,
+          "source_date": null,
+          "source_id": "SYNTHETIC-DEMO-HEOR-A",
+          "source_url": null,
+          "synthetic": true
+        },
+        "incremental_qalys": {
+          "accessed_at": null,
+          "citation": null,
+          "evidence_type": "SYNTHETIC",
+          "grade": "SYNTHETIC",
+          "notes": null,
+          "source_date": null,
+          "source_id": "SYNTHETIC-DEMO-HEOR-A",
+          "source_url": null,
+          "synthetic": true
+        },
+        "indication_definition": {
+          "accessed_at": null,
+          "citation": null,
+          "evidence_type": "SYNTHETIC",
+          "grade": "SYNTHETIC",
+          "notes": "The disease, biomarker, and treatment line are fictitious.",
+          "source_date": null,
+          "source_id": "SYNTHETIC-DEMO-INDICATION-A",
+          "source_url": null,
+          "synthetic": true
+        },
+        "new_non_drug_total_cost": {
+          "accessed_at": null,
+          "citation": null,
+          "evidence_type": "SYNTHETIC",
+          "grade": "SYNTHETIC",
+          "notes": null,
+          "source_date": null,
+          "source_id": "SYNTHETIC-DEMO-HEOR-A",
+          "source_url": null,
+          "synthetic": true
+        },
+        "required_gross_margin_fraction": {
+          "accessed_at": null,
+          "citation": null,
+          "evidence_type": "SYNTHETIC",
+          "grade": "SYNTHETIC",
+          "notes": null,
+          "source_date": null,
+          "source_id": "SYNTHETIC-DEMO-HEOR-A",
+          "source_url": null,
+          "synthetic": true
+        },
+        "willingness_to_pay_per_qaly": {
+          "accessed_at": null,
+          "citation": null,
+          "evidence_type": "SYNTHETIC",
+          "grade": "SYNTHETIC",
+          "notes": null,
+          "source_date": null,
+          "source_id": "SYNTHETIC-DEMO-HEOR-A",
+          "source_url": null,
+          "synthetic": true
+        }
+      },
+      "geography": "United States",
+      "income_bands": [
+        {
+          "annual_income": 38000.0,
+          "evidence": {
+            "accessed_at": null,
+            "citation": null,
+            "evidence_type": "SYNTHETIC",
+            "grade": "SYNTHETIC",
+            "notes": "Fictitious affordability input; never a clinical-value multiplier.",
+            "source_date": null,
+            "source_id": "SYNTHETIC-DEMO-INCOME-LOW",
+            "source_url": null,
+            "synthetic": true
+          },
+          "maximum_oop_share": 0.02,
+          "name": "Synthetic lower-income band",
+          "population_share": 0.35
+        },
+        {
+          "annual_income": 82000.0,
+          "evidence": {
+            "accessed_at": null,
+            "citation": null,
+            "evidence_type": "SYNTHETIC",
+            "grade": "SYNTHETIC",
+            "notes": "Fictitious affordability input; never a clinical-value multiplier.",
+            "source_date": null,
+            "source_id": "SYNTHETIC-DEMO-INCOME-MID",
+            "source_url": null,
+            "synthetic": true
+          },
+          "maximum_oop_share": 0.03,
+          "name": "Synthetic middle-income band",
+          "population_share": 0.45
+        },
+        {
+          "annual_income": 175000.0,
+          "evidence": {
+            "accessed_at": null,
+            "citation": null,
+            "evidence_type": "SYNTHETIC",
+            "grade": "SYNTHETIC",
+            "notes": "Fictitious affordability input; never a clinical-value multiplier.",
+            "source_date": null,
+            "source_id": "SYNTHETIC-DEMO-INCOME-HIGH",
+            "source_url": null,
+            "synthetic": true
+          },
+          "maximum_oop_share": 0.04,
+          "name": "Synthetic upper-income band",
+          "population_share": 0.2
+        }
+      ],
+      "indication_id": "syn-indication-a",
+      "launch_year": 2031,
+      "line_of_therapy": "Third line",
+      "name": "Synthetic biomarker-positive chronic syndrome",
+      "population": {
+        "annual_incident_patients": 2600.0,
+        "assumptions": {
+          "note": "All population values are synthetic."
+        },
+        "cannibalization_fraction": 0.0,
+        "clinically_eligible_fraction": 0.64,
+        "diagnosed_fraction": 0.72,
+        "eligible_patients": 18500.0,
+        "evidence": {
+          "eligible_patients": {
+            "accessed_at": null,
+            "citation": null,
+            "evidence_type": "SYNTHETIC",
+            "grade": "SYNTHETIC",
+            "notes": "Fictitious interface fixture; not epidemiologic evidence.",
+            "source_date": null,
+            "source_id": "SYNTHETIC-DEMO-POP-A",
+            "source_url": null,
+            "synthetic": true
+          }
+        },
+        "overlap_with_initial_fraction": 0.0,
+        "prevalent_backlog_patients": 7200.0
+      },
+      "route": "SUBCUTANEOUS_SELF",
+      "severity": "Severe",
+      "target_population": "Adults with severe biomarker-positive synthetic syndrome",
+      "therapeutic_area": "Synthetic immunology"
+    },
+    "modality": "PEPTIDE",
+    "molecule_identifier": "SYNTHETIC_SEQUENCE_NOT_FOR_USE",
+    "patent": {
+      "assumptions": {
+        "note": "Base patent term starts at filing and the expansion does not reset it."
+      },
+      "base_term_years": 20,
+      "evidence": {
+        "filing_year": {
+          "accessed_at": null,
+          "citation": null,
+          "evidence_type": "SYNTHETIC",
+          "grade": "SYNTHETIC",
+          "notes": "Fictitious filing date and extension; not legal analysis.",
+          "source_date": null,
+          "source_id": "SYNTHETIC-DEMO-PATENT",
+          "source_url": null,
+          "synthetic": true
+        }
+      },
+      "extension_years": 1.5,
+      "filing_year": 2024,
+      "regulatory_exclusivity_end_year": null
+    },
+    "program_id": "SYNTHETIC-LAB-001",
+    "program_name": "LAB-001 synthetic peptide program",
+    "route": "SUBCUTANEOUS_SELF",
+    "target": "SYNTHETIC_TARGET_A",
+    "valuation_year": 2026
+  },
+  "request_id": "synthetic-roi-demo-001"
+}

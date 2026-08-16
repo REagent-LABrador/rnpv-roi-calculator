@@ -1,0 +1,187 @@
+{
+  "synthetic": true,
+  "decision_grade": "NOT_DECISION_GRADE",
+  "warning": "Every comparable and price in this file is fictitious.",
+  "comparables": [
+    {
+      "comparable_id": "syn-comp-primary",
+      "name": "SYNTHETIC AlphaPeptide",
+      "therapeutic_area": "Synthetic immunology",
+      "indication": "Synthetic biomarker-positive chronic syndrome",
+      "target_population": "Adults with severe biomarker-positive synthetic syndrome",
+      "line_of_therapy": "Third line",
+      "geography": "United States",
+      "route": "SUBCUTANEOUS_SELF",
+      "price": {
+        "amount": 148000,
+        "currency": "USD",
+        "basis": "LIST",
+        "period": "ANNUAL",
+        "price_year": 2026,
+        "units_per_year": null,
+        "evidence": {
+          "source_id": "SYNTHETIC-DEMO-COMP-A-PRICE",
+          "evidence_type": "SYNTHETIC",
+          "grade": "SYNTHETIC",
+          "synthetic": true,
+          "notes": "Fictitious list-price fixture; not an observed product price."
+        }
+      },
+      "target_or_mechanism": "SYNTHETIC_TARGET_A",
+      "payer_type": "MIXED",
+      "access_restrictions": ["Synthetic biomarker confirmation"],
+      "evidence": {},
+      "notes": "Primary-match interface fixture; entirely synthetic."
+    },
+    {
+      "comparable_id": "syn-comp-net-anchor",
+      "name": "SYNTHETIC AlphaPeptide modeled-net scenario",
+      "therapeutic_area": "Synthetic immunology",
+      "indication": "Synthetic biomarker-positive chronic syndrome",
+      "target_population": "Adults with severe biomarker-positive synthetic syndrome",
+      "line_of_therapy": "Third line",
+      "geography": "United States",
+      "route": "SUBCUTANEOUS_SELF",
+      "price": {
+        "amount": 115000,
+        "currency": "USD",
+        "basis": "ESTIMATED_NET",
+        "period": "ANNUAL",
+        "price_year": 2026,
+        "units_per_year": null,
+        "evidence": {
+          "source_id": "SYNTHETIC-DEMO-COMP-A-NET-SCENARIO",
+          "evidence_type": "SYNTHETIC",
+          "grade": "SYNTHETIC",
+          "synthetic": true,
+          "notes": "Fictitious modeled-net scenario; not an observed manufacturer net price."
+        }
+      },
+      "target_or_mechanism": "SYNTHETIC_TARGET_A",
+      "payer_type": "MIXED",
+      "access_restrictions": ["Synthetic biomarker confirmation"],
+      "evidence": {},
+      "notes": "Synthetic same-context net scenario kept separate from the synthetic list price."
+    },
+    {
+      "comparable_id": "syn-comp-expansion-net",
+      "name": "SYNTHETIC EpsilonPeptide modeled-net scenario",
+      "therapeutic_area": "Synthetic immunology",
+      "indication": "Synthetic refractory inflammatory syndrome",
+      "target_population": "Adults with refractory synthetic inflammatory syndrome",
+      "line_of_therapy": "Second line",
+      "geography": "United States",
+      "route": "SUBCUTANEOUS_SELF",
+      "price": {
+        "amount": 48000,
+        "currency": "USD",
+        "basis": "ESTIMATED_NET",
+        "period": "ANNUAL",
+        "price_year": 2026,
+        "units_per_year": null,
+        "evidence": {
+          "source_id": "SYNTHETIC-DEMO-COMP-EXPANSION-NET",
+          "evidence_type": "SYNTHETIC",
+          "grade": "SYNTHETIC",
+          "synthetic": true,
+          "notes": "Fictitious expansion modeled-net scenario; not observed manufacturer net."
+        }
+      },
+      "target_or_mechanism": "SYNTHETIC_TARGET_E",
+      "payer_type": "MIXED",
+      "access_restrictions": ["Synthetic prior therapy requirement"],
+      "evidence": {},
+      "notes": "Synthetic expansion match kept separate from all list-price observations."
+    },
+    {
+      "comparable_id": "syn-comp-secondary",
+      "name": "SYNTHETIC BetaPeptide",
+      "therapeutic_area": "Synthetic immunology",
+      "indication": "Synthetic biomarker-positive chronic syndrome",
+      "target_population": "Adults with biomarker-positive synthetic syndrome",
+      "line_of_therapy": "Second line",
+      "geography": "United States",
+      "route": "SUBCUTANEOUS_SELF",
+      "price": {
+        "amount": 121500,
+        "currency": "USD",
+        "basis": "PUBLIC_REIMBURSEMENT",
+        "period": "ANNUAL",
+        "price_year": 2026,
+        "units_per_year": null,
+        "evidence": {
+          "source_id": "SYNTHETIC-DEMO-COMP-B-PRICE",
+          "evidence_type": "SYNTHETIC",
+          "grade": "SYNTHETIC",
+          "synthetic": true,
+          "notes": "Fictitious public-reimbursement fixture; not manufacturer net."
+        }
+      },
+      "target_or_mechanism": "SYNTHETIC_TARGET_B",
+      "payer_type": "PUBLIC_MULTIPAYER",
+      "access_restrictions": ["Synthetic step therapy"],
+      "evidence": {},
+      "notes": "Secondary-match interface fixture; entirely synthetic."
+    },
+    {
+      "comparable_id": "syn-comp-context",
+      "name": "SYNTHETIC GammaSmallMolecule",
+      "therapeutic_area": "Synthetic immunology",
+      "indication": "Synthetic inflammatory syndrome",
+      "target_population": "Adults with moderate synthetic inflammatory syndrome",
+      "line_of_therapy": "First line",
+      "geography": "United States",
+      "route": "ORAL",
+      "price": {
+        "amount": 76000,
+        "currency": "USD",
+        "basis": "ESTIMATED_NET",
+        "period": "ANNUAL",
+        "price_year": 2026,
+        "units_per_year": null,
+        "evidence": {
+          "source_id": "SYNTHETIC-DEMO-COMP-C-PRICE",
+          "evidence_type": "SYNTHETIC",
+          "grade": "SYNTHETIC",
+          "synthetic": true,
+          "notes": "Fictitious analyst-estimated-net scenario, not an observed net price."
+        }
+      },
+      "target_or_mechanism": "SYNTHETIC_TARGET_C",
+      "payer_type": "COMMERCIAL_INSURANCE",
+      "access_restrictions": [],
+      "evidence": {},
+      "notes": "Context-only interface fixture; entirely synthetic."
+    },
+    {
+      "comparable_id": "syn-comp-excluded",
+      "name": "SYNTHETIC DeltaInfusion",
+      "therapeutic_area": "Synthetic oncology",
+      "indication": "Synthetic solid tumor",
+      "target_population": "Adults with metastatic synthetic solid tumor",
+      "line_of_therapy": "First line",
+      "geography": "United Kingdom",
+      "route": "INTRAVENOUS",
+      "price": {
+        "amount": 92000,
+        "currency": "GBP",
+        "basis": "LIST",
+        "period": "COURSE",
+        "price_year": 2026,
+        "units_per_year": 1,
+        "evidence": {
+          "source_id": "SYNTHETIC-DEMO-COMP-D-PRICE",
+          "evidence_type": "SYNTHETIC",
+          "grade": "SYNTHETIC",
+          "synthetic": true,
+          "notes": "Fictitious cross-currency excluded-comparable fixture."
+        }
+      },
+      "target_or_mechanism": "SYNTHETIC_TARGET_D",
+      "payer_type": "PUBLIC_SINGLE_PAYER",
+      "access_restrictions": ["Synthetic HTA restriction"],
+      "evidence": {},
+      "notes": "Expected to remain excluded; no implicit FX conversion is allowed."
+    }
+  ]
+}

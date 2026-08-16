@@ -1,0 +1,1129 @@
+{
+  "$defs": {
+    "AccessAssumptions": {
+      "additionalProperties": false,
+      "description": "Health-system access factors, distinct from patient income affordability.",
+      "properties": {
+        "adoption_by_year": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Adoption By Year",
+          "type": "object"
+        },
+        "annual_patient_oop": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Observed or explicitly modeled annual patient out-of-pocket amount. This is distinct from manufacturer net revenue.",
+          "title": "Annual Patient Oop"
+        },
+        "assumptions": {
+          "additionalProperties": true,
+          "title": "Assumptions",
+          "type": "object"
+        },
+        "coverage_fraction": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Coverage Fraction"
+        },
+        "evidence": {
+          "additionalProperties": {
+            "$ref": "#/$defs/EvidenceMetadata"
+          },
+          "title": "Evidence",
+          "type": "object"
+        },
+        "initiation_fraction": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Initiation Fraction"
+        },
+        "patient_cost_share_fraction": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Patient Cost Share Fraction"
+        },
+        "payer_type": {
+          "$ref": "#/$defs/PayerType",
+          "default": "UNKNOWN"
+        },
+        "prior_authorization_pass_fraction": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Prior Authorization Pass Fraction"
+        },
+        "provider_capacity_fraction": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Provider Capacity Fraction"
+        },
+        "restrictions": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Restrictions",
+          "type": "array"
+        },
+        "universal_or_public_coverage": {
+          "default": false,
+          "title": "Universal Or Public Coverage",
+          "type": "boolean"
+        }
+      },
+      "title": "AccessAssumptions",
+      "type": "object"
+    },
+    "ComparableTherapy": {
+      "additionalProperties": false,
+      "description": "One market analogue with explicit clinical placement and price provenance.",
+      "properties": {
+        "access_restrictions": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Access Restrictions",
+          "type": "array"
+        },
+        "comparable_id": {
+          "title": "Comparable Id",
+          "type": "string"
+        },
+        "evidence": {
+          "additionalProperties": {
+            "$ref": "#/$defs/EvidenceMetadata"
+          },
+          "title": "Evidence",
+          "type": "object"
+        },
+        "geography": {
+          "title": "Geography",
+          "type": "string"
+        },
+        "indication": {
+          "title": "Indication",
+          "type": "string"
+        },
+        "line_of_therapy": {
+          "title": "Line Of Therapy",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "notes": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Notes"
+        },
+        "payer_type": {
+          "$ref": "#/$defs/PayerType",
+          "default": "UNKNOWN"
+        },
+        "price": {
+          "$ref": "#/$defs/PriceObservation"
+        },
+        "route": {
+          "$ref": "#/$defs/RouteOfAdministration"
+        },
+        "target_or_mechanism": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Target Or Mechanism"
+        },
+        "target_population": {
+          "title": "Target Population",
+          "type": "string"
+        },
+        "therapeutic_area": {
+          "title": "Therapeutic Area",
+          "type": "string"
+        }
+      },
+      "required": [
+        "comparable_id",
+        "name",
+        "therapeutic_area",
+        "indication",
+        "target_population",
+        "line_of_therapy",
+        "geography",
+        "route",
+        "price"
+      ],
+      "title": "ComparableTherapy",
+      "type": "object"
+    },
+    "DevelopmentAssumptions": {
+      "additionalProperties": false,
+      "properties": {
+        "assumptions": {
+          "additionalProperties": true,
+          "title": "Assumptions",
+          "type": "object"
+        },
+        "current_stage": {
+          "minLength": 1,
+          "title": "Current Stage",
+          "type": "string"
+        },
+        "evidence": {
+          "additionalProperties": {
+            "$ref": "#/$defs/EvidenceMetadata"
+          },
+          "title": "Evidence",
+          "type": "object"
+        },
+        "program_probability_of_approval": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Program Probability Of Approval"
+        },
+        "stage_costs": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Stage Costs",
+          "type": "object"
+        },
+        "stage_durations_years": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Stage Durations Years",
+          "type": "object"
+        },
+        "stage_order": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Stage Order",
+          "type": "array"
+        },
+        "stage_success_probabilities": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Stage Success Probabilities",
+          "type": "object"
+        }
+      },
+      "required": [
+        "current_stage"
+      ],
+      "title": "DevelopmentAssumptions",
+      "type": "object"
+    },
+    "EvidenceGrade": {
+      "description": "Strength of evidence supporting an input.",
+      "enum": [
+        "HIGH",
+        "MODERATE",
+        "LOW",
+        "VERY_LOW",
+        "UNSUPPORTED",
+        "SYNTHETIC"
+      ],
+      "title": "EvidenceGrade",
+      "type": "string"
+    },
+    "EvidenceMetadata": {
+      "additionalProperties": false,
+      "description": "Provenance attached to a price, assumption, or observed value.",
+      "properties": {
+        "accessed_at": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Accessed At"
+        },
+        "citation": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Citation"
+        },
+        "evidence_type": {
+          "$ref": "#/$defs/EvidenceType",
+          "default": "UNSUPPORTED"
+        },
+        "grade": {
+          "$ref": "#/$defs/EvidenceGrade",
+          "default": "UNSUPPORTED"
+        },
+        "notes": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Notes"
+        },
+        "source_date": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Date"
+        },
+        "source_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Id"
+        },
+        "source_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Url"
+        },
+        "synthetic": {
+          "default": false,
+          "title": "Synthetic",
+          "type": "boolean"
+        }
+      },
+      "title": "EvidenceMetadata",
+      "type": "object"
+    },
+    "EvidenceType": {
+      "enum": [
+        "PRIMARY_RESEARCH",
+        "REGULATORY",
+        "PAYER_OR_HTA",
+        "REAL_WORLD",
+        "SECONDARY_RESEARCH",
+        "EXPERT_ELICITATION",
+        "INTERNAL",
+        "ASSUMPTION",
+        "SYNTHETIC",
+        "UNSUPPORTED"
+      ],
+      "title": "EvidenceType",
+      "type": "string"
+    },
+    "IncomeBandAssumptions": {
+      "additionalProperties": false,
+      "description": "Patient affordability inputs; never an input to clinical value.",
+      "properties": {
+        "annual_income": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Annual Income"
+        },
+        "evidence": {
+          "$ref": "#/$defs/EvidenceMetadata"
+        },
+        "maximum_oop_share": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Maximum Oop Share"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "population_share": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Population Share",
+          "type": "number"
+        }
+      },
+      "required": [
+        "name",
+        "population_share",
+        "evidence"
+      ],
+      "title": "IncomeBandAssumptions",
+      "type": "object"
+    },
+    "IndicationInput": {
+      "additionalProperties": false,
+      "description": "One label opportunity; expansions do not alter the asset patent clock.",
+      "properties": {
+        "access": {
+          "$ref": "#/$defs/AccessAssumptions"
+        },
+        "assumptions": {
+          "additionalProperties": true,
+          "title": "Assumptions",
+          "type": "object"
+        },
+        "biomarker": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Biomarker"
+        },
+        "comparator_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Comparator Ids",
+          "type": "array"
+        },
+        "currency": {
+          "maxLength": 3,
+          "minLength": 3,
+          "title": "Currency",
+          "type": "string"
+        },
+        "evidence": {
+          "additionalProperties": {
+            "$ref": "#/$defs/EvidenceMetadata"
+          },
+          "title": "Evidence",
+          "type": "object"
+        },
+        "geography": {
+          "minLength": 1,
+          "title": "Geography",
+          "type": "string"
+        },
+        "income_bands": {
+          "items": {
+            "$ref": "#/$defs/IncomeBandAssumptions"
+          },
+          "title": "Income Bands",
+          "type": "array"
+        },
+        "indication_id": {
+          "minLength": 1,
+          "title": "Indication Id",
+          "type": "string"
+        },
+        "launch_year": {
+          "title": "Launch Year",
+          "type": "integer"
+        },
+        "line_of_therapy": {
+          "minLength": 1,
+          "title": "Line Of Therapy",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "population": {
+          "$ref": "#/$defs/PopulationInput"
+        },
+        "route": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RouteOfAdministration"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "severity": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Severity"
+        },
+        "target_population": {
+          "minLength": 1,
+          "title": "Target Population",
+          "type": "string"
+        },
+        "therapeutic_area": {
+          "minLength": 1,
+          "title": "Therapeutic Area",
+          "type": "string"
+        }
+      },
+      "required": [
+        "indication_id",
+        "name",
+        "therapeutic_area",
+        "target_population",
+        "line_of_therapy",
+        "geography",
+        "currency",
+        "launch_year",
+        "population",
+        "access"
+      ],
+      "title": "IndicationInput",
+      "type": "object"
+    },
+    "Modality": {
+      "description": "Supported therapeutic modalities without implicit economic assumptions.",
+      "enum": [
+        "SMALL_MOLECULE",
+        "PEPTIDE",
+        "ANTIBODY"
+      ],
+      "title": "Modality",
+      "type": "string"
+    },
+    "ModuleExecution": {
+      "additionalProperties": false,
+      "description": "Deterministic execution settings supplied explicitly by the orchestrator.",
+      "properties": {
+        "seed": {
+          "maximum": 4294967295,
+          "minimum": 0,
+          "title": "Seed",
+          "type": "integer"
+        },
+        "simulation_assumptions": {
+          "$ref": "#/$defs/SimulationAssumptions"
+        },
+        "simulations": {
+          "maximum": 100000,
+          "minimum": 1,
+          "title": "Simulations",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "simulations",
+        "seed"
+      ],
+      "title": "ModuleExecution",
+      "type": "object"
+    },
+    "PatentAssumptions": {
+      "additionalProperties": false,
+      "properties": {
+        "assumptions": {
+          "additionalProperties": true,
+          "title": "Assumptions",
+          "type": "object"
+        },
+        "base_term_years": {
+          "default": 20,
+          "minimum": 1,
+          "title": "Base Term Years",
+          "type": "integer"
+        },
+        "evidence": {
+          "additionalProperties": {
+            "$ref": "#/$defs/EvidenceMetadata"
+          },
+          "title": "Evidence",
+          "type": "object"
+        },
+        "extension_years": {
+          "default": 0,
+          "maximum": 5,
+          "minimum": 0,
+          "title": "Extension Years",
+          "type": "number"
+        },
+        "filing_year": {
+          "title": "Filing Year",
+          "type": "integer"
+        },
+        "regulatory_exclusivity_end_year": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Regulatory Exclusivity End Year"
+        }
+      },
+      "required": [
+        "filing_year"
+      ],
+      "title": "PatentAssumptions",
+      "type": "object"
+    },
+    "PayerType": {
+      "enum": [
+        "PUBLIC_SINGLE_PAYER",
+        "PUBLIC_MULTIPAYER",
+        "COMMERCIAL_INSURANCE",
+        "MIXED",
+        "TENDER",
+        "CASH_PAY",
+        "UNKNOWN"
+      ],
+      "title": "PayerType",
+      "type": "string"
+    },
+    "PopulationInput": {
+      "additionalProperties": false,
+      "description": "Population stock and flow for one indication and treatment line.",
+      "properties": {
+        "annual_incident_patients": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Annual Incident Patients"
+        },
+        "assumptions": {
+          "additionalProperties": true,
+          "title": "Assumptions",
+          "type": "object"
+        },
+        "cannibalization_fraction": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cannibalization Fraction"
+        },
+        "clinically_eligible_fraction": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Clinically Eligible Fraction"
+        },
+        "diagnosed_fraction": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Diagnosed Fraction"
+        },
+        "eligible_patients": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Eligible Patients"
+        },
+        "evidence": {
+          "additionalProperties": {
+            "$ref": "#/$defs/EvidenceMetadata"
+          },
+          "title": "Evidence",
+          "type": "object"
+        },
+        "overlap_with_initial_fraction": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Overlap With Initial Fraction"
+        },
+        "prevalent_backlog_patients": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Prevalent Backlog Patients"
+        }
+      },
+      "title": "PopulationInput",
+      "type": "object"
+    },
+    "PriceBasis": {
+      "description": "Price bases that must never be silently combined.",
+      "enum": [
+        "LIST",
+        "PUBLIC_REIMBURSEMENT",
+        "ESTIMATED_NET",
+        "OBSERVED_NET"
+      ],
+      "title": "PriceBasis",
+      "type": "string"
+    },
+    "PriceObservation": {
+      "additionalProperties": false,
+      "description": "A price with an explicit, non-interchangeable basis.",
+      "properties": {
+        "amount": {
+          "exclusiveMinimum": 0,
+          "title": "Amount",
+          "type": "number"
+        },
+        "basis": {
+          "$ref": "#/$defs/PriceBasis"
+        },
+        "currency": {
+          "maxLength": 3,
+          "minLength": 3,
+          "title": "Currency",
+          "type": "string"
+        },
+        "evidence": {
+          "$ref": "#/$defs/EvidenceMetadata"
+        },
+        "period": {
+          "$ref": "#/$defs/PricePeriod",
+          "default": "ANNUAL"
+        },
+        "price_year": {
+          "title": "Price Year",
+          "type": "integer"
+        },
+        "units_per_year": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Units Per Year"
+        }
+      },
+      "required": [
+        "amount",
+        "currency",
+        "basis",
+        "price_year",
+        "evidence"
+      ],
+      "title": "PriceObservation",
+      "type": "object"
+    },
+    "PricePeriod": {
+      "enum": [
+        "ANNUAL",
+        "MONTH",
+        "COURSE",
+        "UNIT"
+      ],
+      "title": "PricePeriod",
+      "type": "string"
+    },
+    "ProgramInput": {
+      "additionalProperties": false,
+      "description": "Flexible asset contract shared by pricing and downstream cash-flow modules.",
+      "properties": {
+        "assumptions": {
+          "additionalProperties": true,
+          "title": "Assumptions",
+          "type": "object"
+        },
+        "base_year": {
+          "title": "Base Year",
+          "type": "integer"
+        },
+        "currency": {
+          "maxLength": 3,
+          "minLength": 3,
+          "title": "Currency",
+          "type": "string"
+        },
+        "development": {
+          "$ref": "#/$defs/DevelopmentAssumptions"
+        },
+        "evidence": {
+          "additionalProperties": {
+            "$ref": "#/$defs/EvidenceMetadata"
+          },
+          "title": "Evidence",
+          "type": "object"
+        },
+        "expansion_indications": {
+          "items": {
+            "$ref": "#/$defs/IndicationInput"
+          },
+          "title": "Expansion Indications",
+          "type": "array"
+        },
+        "initial_indication": {
+          "$ref": "#/$defs/IndicationInput"
+        },
+        "modality": {
+          "$ref": "#/$defs/Modality"
+        },
+        "molecule_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Molecule Identifier"
+        },
+        "patent": {
+          "$ref": "#/$defs/PatentAssumptions"
+        },
+        "program_id": {
+          "minLength": 1,
+          "title": "Program Id",
+          "type": "string"
+        },
+        "program_name": {
+          "minLength": 1,
+          "title": "Program Name",
+          "type": "string"
+        },
+        "route": {
+          "$ref": "#/$defs/RouteOfAdministration"
+        },
+        "target": {
+          "minLength": 1,
+          "title": "Target",
+          "type": "string"
+        },
+        "valuation_year": {
+          "title": "Valuation Year",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "program_id",
+        "program_name",
+        "target",
+        "modality",
+        "route",
+        "base_year",
+        "valuation_year",
+        "currency",
+        "initial_indication",
+        "patent",
+        "development"
+      ],
+      "title": "ProgramInput",
+      "type": "object"
+    },
+    "RouteOfAdministration": {
+      "enum": [
+        "ORAL",
+        "SUBCUTANEOUS_SELF",
+        "SUBCUTANEOUS_CLINIC",
+        "INTRAMUSCULAR",
+        "INTRAVENOUS",
+        "OTHER"
+      ],
+      "title": "RouteOfAdministration",
+      "type": "string"
+    },
+    "SimulationAssumptions": {
+      "description": "Shared draws preserve correlation between the initial and expansion indications.",
+      "properties": {
+        "development_cost_multiplier": {
+          "$ref": "#/$defs/TriangularRange",
+          "default": {
+            "high": 1.25,
+            "low": 0.85,
+            "mode": 1.0
+          }
+        },
+        "gross_to_net_shift": {
+          "$ref": "#/$defs/TriangularRange",
+          "default": {
+            "high": 0.1,
+            "low": -0.05,
+            "mode": 0.0
+          }
+        },
+        "launch_delay_years": {
+          "$ref": "#/$defs/TriangularRange",
+          "default": {
+            "high": 2.0,
+            "low": 0.0,
+            "mode": 0.0
+          }
+        },
+        "loe_retention_multiplier": {
+          "$ref": "#/$defs/TriangularRange",
+          "default": {
+            "high": 1.25,
+            "low": 0.75,
+            "mode": 1.0
+          }
+        },
+        "patient_multiplier": {
+          "$ref": "#/$defs/TriangularRange",
+          "default": {
+            "high": 1.3,
+            "low": 0.7,
+            "mode": 1.0
+          }
+        },
+        "persistence_multiplier": {
+          "$ref": "#/$defs/TriangularRange",
+          "default": {
+            "high": 1.05,
+            "low": 0.85,
+            "mode": 1.0
+          }
+        },
+        "price_multiplier": {
+          "$ref": "#/$defs/TriangularRange",
+          "default": {
+            "high": 1.25,
+            "low": 0.75,
+            "mode": 1.0
+          }
+        }
+      },
+      "title": "SimulationAssumptions",
+      "type": "object"
+    },
+    "TriangularRange": {
+      "properties": {
+        "high": {
+          "title": "High",
+          "type": "number"
+        },
+        "low": {
+          "title": "Low",
+          "type": "number"
+        },
+        "mode": {
+          "title": "Mode",
+          "type": "number"
+        }
+      },
+      "required": [
+        "low",
+        "mode",
+        "high"
+      ],
+      "title": "TriangularRange",
+      "type": "object"
+    }
+  },
+  "$id": "urn:reagent-labrador:rnpv_roi_calculator:input:1.0.0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Self-contained input for one ROI/rNPV calculation.",
+  "properties": {
+    "comparables": {
+      "items": {
+        "$ref": "#/$defs/ComparableTherapy"
+      },
+      "title": "Comparables",
+      "type": "array"
+    },
+    "contract_version": {
+      "const": "1.0.0",
+      "title": "Contract Version",
+      "type": "string"
+    },
+    "execution": {
+      "$ref": "#/$defs/ModuleExecution"
+    },
+    "module": {
+      "const": "rnpv_roi_calculator",
+      "title": "Module",
+      "type": "string"
+    },
+    "program": {
+      "$ref": "#/$defs/ProgramInput"
+    },
+    "request_id": {
+      "maxLength": 200,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9._:-]+$",
+      "title": "Request Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "contract_version",
+    "module",
+    "request_id",
+    "program",
+    "comparables",
+    "execution"
+  ],
+  "title": "rNPV ROI Calculator Input v1",
+  "type": "object"
+}

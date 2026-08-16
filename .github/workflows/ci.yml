@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      - run: uv python install 3.11
+      - run: uv sync --extra dev --locked --no-editable
+      - run: .venv/bin/python scripts/generate_contract_artifacts.py
+      - run: git diff --exit-code -- schemas examples/input.json
+      - run: .venv/bin/ruff format --check .
+      - run: .venv/bin/ruff check .
+      - run: .venv/bin/pytest
+      - run: .venv/bin/rnpv-roi run --input examples/input.json --output contract-output.json
+      - run: .venv/bin/labrador example --compact
+      - run: uv build
