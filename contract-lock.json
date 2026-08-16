@@ -1,0 +1,10 @@
+{
+  "repository": "https://github.com/REagent-LABrador/platform-contracts",
+  "commit": "755499b42ab65d3b01f959b11624dd4e61bdd561",
+  "schemas": {
+    "schemas/interpretability.schema.json": {
+      "source": "schemas/interpretability.schema.json",
+      "sha256": "ac7b27908688851b4fc3de5e3d31642a6e9d4422b422f57161f2c9ab42c3d6bb"
+    }
+  }
+}

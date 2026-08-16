@@ -31,6 +31,53 @@ MODULE_NAME = "rnpv_roi_calculator"
 JSON_SCHEMA_DIALECT = "https://json-schema.org/draft/2020-12/schema"
 INPUT_SCHEMA_ID = f"urn:reagent-labrador:{MODULE_NAME}:input:{CONTRACT_VERSION}"
 OUTPUT_SCHEMA_ID = f"urn:reagent-labrador:{MODULE_NAME}:output:{CONTRACT_VERSION}"
+SHARED_INTERPRETABILITY_SCHEMA_ID = (
+    "https://schemas.reagent-labrador.org/interpretability/1.0.0/interpretability.schema.json"
+)
+
+
+def _shared_interpretability_schema() -> dict[str, Any]:
+    """Load the hash-pinned shared schema in source and installed layouts."""
+
+    candidates = (
+        Path(__file__).resolve().parents[2] / "schemas" / "interpretability.schema.json",
+        Path(__file__).resolve().parent / "schemas" / "interpretability.schema.json",
+    )
+    for path in candidates:
+        if path.is_file():
+            schema = json.loads(path.read_text(encoding="utf-8"))
+            if schema.get("$id") != SHARED_INTERPRETABILITY_SCHEMA_ID:
+                raise RuntimeError(f"unexpected shared interpretability schema id in {path}")
+            return schema
+    raise RuntimeError("vendored interpretability.schema.json is missing")
+
+
+def _embed_shared_interpretability(schema: dict[str, Any]) -> dict[str, Any]:
+    """Replace Pydantic's duplicate definition with the vendored contract.
+
+    The published output schema stays a standalone JSON document, while its
+    Interpretability definition and primitives are generated only from the
+    hash-pinned platform contract.
+    """
+
+    shared = _shared_interpretability_schema()
+    shared_defs = dict(shared["$defs"])
+    shared_body = {
+        key: value
+        for key, value in shared.items()
+        if key not in {"$schema", "$id", "$defs"}
+    }
+    definitions = schema["$defs"]
+    for name in list(definitions):
+        if name == "JsonValue" or name.startswith("Interpretability"):
+            definitions.pop(name)
+    collisions = set(definitions).intersection(shared_defs)
+    if collisions:
+        joined = ", ".join(sorted(collisions))
+        raise RuntimeError(f"shared interpretability definition collision: {joined}")
+    definitions.update(shared_defs)
+    definitions["Interpretability"] = shared_body
+    return schema
 
 
 def _reject_nonfinite_numbers(value: Any, path: str = "$") -> None:
@@ -181,7 +228,7 @@ def output_json_schema() -> dict[str, Any]:
             "title": "rNPV ROI Calculator Output v1",
         }
     )
-    return schema
+    return _embed_shared_interpretability(schema)
 
 
 def write_json_schemas(directory: Path) -> tuple[Path, Path]:

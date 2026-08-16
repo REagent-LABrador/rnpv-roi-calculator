@@ -43,6 +43,7 @@ packages = ["src/labrador_roi"]
 [tool.hatch.build.targets.sdist]
 include = [
   "/README.md",
+  "/contract-lock.json",
   "/examples",
   "/scripts",
   "/schemas",
