@@ -63,9 +63,7 @@ def _embed_shared_interpretability(schema: dict[str, Any]) -> dict[str, Any]:
     shared = _shared_interpretability_schema()
     shared_defs = dict(shared["$defs"])
     shared_body = {
-        key: value
-        for key, value in shared.items()
-        if key not in {"$schema", "$id", "$defs"}
+        key: value for key, value in shared.items() if key not in {"$schema", "$id", "$defs"}
     }
     definitions = schema["$defs"]
     for name in list(definitions):
