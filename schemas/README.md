@@ -1,7 +1,14 @@
 # rNPV/ROI module JSON contracts
 
-Both schemas use JSON Schema Draft 2020-12 and are generated from the Pydantic transport/domain
-models. Regenerate the schemas/input example, then the canonical response, with:
+`interpretability.schema.json` is an exact vendored copy from
+`platform-contracts`. `../contract-lock.json` records its source commit and
+SHA-256. `output.schema.json` remains standalone: generation replaces the
+Pydantic interpretability definitions with the vendored shared definition and
+primitives, so there is no separately maintained schema copy.
+
+The input and output schemas use JSON Schema Draft 2020-12 and are generated
+from the Pydantic transport/domain models. Regenerate the schemas/input
+example, then the canonical response, with:
 
 ```bash
 .venv/bin/python scripts/generate_contract_artifacts.py

@@ -2,12 +2,13 @@ from __future__ import annotations
 
 import json
 from copy import deepcopy
+from hashlib import sha256
 from pathlib import Path
 
 from jsonschema import Draft202012Validator
 from typer.testing import CliRunner
 
-from labrador_roi.contracts import input_json_schema, output_json_schema
+from labrador_roi.contracts import ModuleRunRequest, input_json_schema, output_json_schema
 from labrador_roi.module_runner import app
 from labrador_roi.replay import replay_analysis
 
@@ -44,12 +45,44 @@ def test_checked_in_schemas_are_valid_and_match_typed_contracts() -> None:
     assert stored_output == output_json_schema()
 
 
+def test_vendored_interpretability_schema_matches_platform_lock() -> None:
+    lock = _strict_load(ROOT / "contract-lock.json")
+    for local_path, pin in lock["schemas"].items():
+        digest = sha256((ROOT / local_path).read_bytes()).hexdigest()
+        assert digest == pin["sha256"]
+
+
+def test_complete_module_run_request_shape_is_accepted() -> None:
+    payload = _strict_load(ROOT / "examples" / "input.json")
+    assert set(payload) == {
+        "comparables",
+        "contract_version",
+        "execution",
+        "module",
+        "program",
+        "request_id",
+    }
+    assert set(payload["execution"]) == {
+        "seed",
+        "simulation_assumptions",
+        "simulations",
+    }
+    request = ModuleRunRequest.model_validate(payload)
+    assert request.request_id == "synthetic-roi-demo-001"
+    assert request.program.program_id
+    assert request.comparables
+
+
 def test_golden_input_and_output_validate_against_published_schemas() -> None:
     Draft202012Validator(input_json_schema()).validate(
         _strict_load(ROOT / "examples" / "input.json")
     )
     Draft202012Validator(output_json_schema()).validate(
         _strict_load(ROOT / "examples" / "output.json")
+    )
+    shared = _strict_load(ROOT / "schemas" / "interpretability.schema.json")
+    Draft202012Validator(shared).validate(
+        _strict_load(ROOT / "examples" / "output.json")["interpretability"]
     )
 
 
